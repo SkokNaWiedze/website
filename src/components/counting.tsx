@@ -64,7 +64,7 @@ export default function Counting({
   };
 
   const [isExploding, setIsExploding] = useState(false);
-  const [answer, setAnswer] = useState<number | null>(null);
+  const [answer, setAnswer] = useState<any | null>(null);
 
   const checkResult = () => {
     result.current.style.display = "block";
