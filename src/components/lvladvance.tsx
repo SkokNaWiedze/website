@@ -9,24 +9,24 @@ interface QueryParams {
   setAdvanceSearch: React.Dispatch<React.SetStateAction<any>>;
   howManyNumbers: any;
   setHowManyNumbers: React.Dispatch<React.SetStateAction<any>>;
-  complexity: any;
-  setComplexity: React.Dispatch<React.SetStateAction<any>>;
+  // complexity: any;
+  // setComplexity: React.Dispatch<React.SetStateAction<any>>;
   howMuchTime: any;
   setHowMuchTime: React.Dispatch<React.SetStateAction<any>>;
   trigger: any;
   setTrigger: React.Dispatch<React.SetStateAction<any>>;
-  answer: any;
-  setAnswer: React.Dispatch<React.SetStateAction<any>>;
-  actualNumber: any;
-  setActualNumber: React.Dispatch<React.SetStateAction<any>>;
+  // answer: any;
+  // setAnswer: React.Dispatch<React.SetStateAction<any>>;
+  // actualNumber: any;
+  // setActualNumber: React.Dispatch<React.SetStateAction<any>>;
   sum: any;
   setSum: React.Dispatch<React.SetStateAction<any>>;
   numbers: any;
   setNumbers: React.Dispatch<React.SetStateAction<any>>;
   finish: any;
   setFinish: React.Dispatch<React.SetStateAction<any>>;
-  finishAnwer: any;
-  setFinishAnswer: React.Dispatch<React.SetStateAction<any>>;
+  //   finishAnwer: any;
+  //   setFinishAnswer: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export default function NumbersAdvance({
@@ -36,25 +36,25 @@ export default function NumbersAdvance({
   setAdvanceSearch,
   howManyNumbers,
   setHowManyNumbers,
-  complexity,
-  setComplexity,
+  // complexity,
+  // setComplexity,
   howMuchTime,
   setHowMuchTime,
   trigger,
   setTrigger,
-  answer,
-  setAnswer,
-  actualNumber,
-  setActualNumber,
+  // answer,
+  // setAnswer,
+  // actualNumber,
+  // setActualNumber,
   sum,
   setSum,
   numbers,
   setNumbers,
   finish,
   setFinish,
-  finishAnwer,
-  setFinishAnswer,
-}: QueryParams) {
+}: // finishAnwer,
+// setFinishAnswer,
+QueryParams) {
   const [numberOfNumbers, setNumberOfNumbers] = useState(4);
   const descAdvance: any = useRef();
 
@@ -124,7 +124,7 @@ export default function NumbersAdvance({
 
   return (
     <div className="my-[10px] flex items-center">
-      <Advancesearch
+      {/* <Advancesearch
         howManyNumbers={howManyNumbers}
         setHowManyNumbers={setHowManyNumbers}
         complexity={complexity}
@@ -147,7 +147,7 @@ export default function NumbersAdvance({
         setFinishAnswer={setFinishAnswer}
         advanceSearch={advanceSearch}
         setAdvanceSearch={setAdvanceSearch}
-      />
+      /> */}
       <div>
         <div
           ref={descAdvance}

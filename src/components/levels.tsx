@@ -5,6 +5,7 @@ import NumbersStarter from "@/components/lvlstarter";
 import NumbersAdvance from "./lvladvance";
 import NumbersBasic from "./lvlbasic";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
+import Complexity from "./complexity";
 
 interface Props {
   advanceSearch: any;
@@ -142,6 +143,10 @@ export default function Levels({
               setHowMuchTime={setHowMuchTime}
               trigger={trigger}
               setTrigger={setTrigger}
+              sum={sum}
+              setSum={setSum}
+              finish={finish}
+              setFinish={setFinish}
             />
           </div>
           <div className="w-1/2 flex justify-center items-center">
