@@ -64,7 +64,7 @@ export default function Counting({
   };
 
   const [isExploding, setIsExploding] = useState(false);
-  const [answer, setAnswer] = useState();
+  const [answer, setAnswer] = useState<number | null>(null);
 
   const checkResult = () => {
     result.current.style.display = "block";
@@ -80,7 +80,7 @@ export default function Counting({
     console.log(suma);
     console.log(answer);
 
-    if (parseInt(answer) === suma) {
+    if (answer === suma) {
       setIsExploding(true);
     }
   };
