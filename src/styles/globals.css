@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  box-sizing: border-box;
+}
+
+.loader {
+  background-color: white;
+}
+
+.loading-grow {
+  background-color: #23c55e;
+  height: 100%;
+  animation-name: load;
+  animation-duration: 2s;
+}
+
+@keyframes load {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
