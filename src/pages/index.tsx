@@ -30,7 +30,11 @@ export default function Home() {
 
   let showedNumber;
 
-  const num = numbers.map((i) => <div className="px-[10px]">{i}</div>);
+  const num = numbers.map((i) => (
+    <div key={i} className="px-[10px]">
+      {i}
+    </div>
+  ));
 
   let nums;
 
