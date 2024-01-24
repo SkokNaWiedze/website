@@ -148,7 +148,10 @@ export default function Account() {
             <div className="flex">
               <div id="aded-numbers" className="min-w-[200px] flex py-[10px]">
                 {numersList.map((i: any) => (
-                  <div className="text-[20px] text-white mx-[10px] border rounded-[10px] bg-green-500 w-[40px] h-[40px] flex items-center justify-center">
+                  <div
+                    key={i}
+                    className="text-[20px] text-white mx-[10px] border rounded-[10px] bg-green-500 w-[40px] h-[40px] flex items-center justify-center"
+                  >
                     {i}
                   </div>
                 ))}
@@ -174,11 +177,14 @@ export default function Account() {
           <p className="mb-[20px] font-bold text-[20px]">Twoje aktualne zestawy liczb:</p>
           <div id="data=base">
             {activeNumbers?.map((i: any, index) => (
-              <div className="flex my-[10px] justify-between border-b py-[5px]">
+              <div key={i} className="flex my-[10px] justify-between border-b py-[5px]">
                 <div className="flex">
                   <p className="px-[5px] h-[42px] leading-[42px]">{index + 1}.</p>
                   {i.Numbers.map((number: any) => (
-                    <div className="text-[30px] text-white bg-green-400 p-[10px] border min-w-[42px] h-[42px] mr-[5px] flex justify-center items-center rounded-[10px]">
+                    <div
+                      key={i}
+                      className="text-[30px] text-white bg-green-400 p-[10px] border min-w-[42px] h-[42px] mr-[5px] flex justify-center items-center rounded-[10px]"
+                    >
                       {number}
                     </div>
                   ))}
@@ -207,11 +213,14 @@ export default function Account() {
           <p className="mb-[20px] font-bold text-[20px]">Zestawy udostepnione dla Ciebie:</p>
           <div id="data=base">
             {activeNumbers?.map((i: any, index) => (
-              <div className="flex my-[10px] justify-between border-b py-[5px]">
+              <div key={i} className="flex my-[10px] justify-between border-b py-[5px]">
                 <div className="flex">
                   <p className="px-[5px] h-[42px] leading-[42px]">{index + 1}.</p>
                   {i.Numbers.map((number: any) => (
-                    <div className="text-[30px] text-white bg-green-400 p-[10px] border min-w-[42px] h-[42px] mr-[5px] flex justify-center items-center rounded-[10px]">
+                    <div
+                      key={i}
+                      className="text-[30px] text-white bg-green-400 p-[10px] border min-w-[42px] h-[42px] mr-[5px] flex justify-center items-center rounded-[10px]"
+                    >
                       {number}
                     </div>
                   ))}
@@ -242,7 +251,7 @@ export default function Account() {
         <p className="mb-[20px] font-bold text-[20px]">Zestawy liczb w bazie:</p>
         <div id="data=base">
           {numbersFromDataBase?.map((i: any, index) => (
-            <div className="flex my-[10px] justify-between border-b py-[5px]">
+            <div key={i} className="flex my-[10px] justify-between border-b py-[5px]">
               <div className="flex">
                 <p className="px-[5px] h-[42px] leading-[42px]">{index + 1}.</p>
                 {i.Numbers.map((number: any) => (
