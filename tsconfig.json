@@ -18,12 +18,6 @@
     },
     "typeRoots": ["/index.d.ts"]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/pages/appcontext",
-    "src/middleware.tsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/middleware.tsx"],
   "exclude": ["node_modules"]
 }

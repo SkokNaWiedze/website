@@ -4,6 +4,7 @@ import Image from "next/image";
 import NumbersStarter from "@/components/lvlstarter";
 import NumbersAdvance from "./lvladvance";
 import NumbersBasic from "./lvlbasic";
+import NumbersRandom from "./lvlrandom";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
 import Complexity from "./complexity";
 
@@ -147,6 +148,18 @@ export default function Levels({
               setSum={setSum}
               finish={finish}
               setFinish={setFinish}
+            />
+            <NumbersRandom
+              advanceSearch={advanceSearch}
+              setAdvanceSearch={setAdvanceSearch}
+              numbers={numbers}
+              setNumbers={setNumbers}
+              levelChoosed={levelChoosed}
+              setLevelChoosed={setLevelChoosed}
+              howManyNumbers={howManyNumbers}
+              setHowManyNumbers={setHowManyNumbers}
+              howMuchTime={howMuchTime}
+              setHowMuchTime={setHowMuchTime}
             />
           </div>
           <div className="w-1/2 flex justify-center items-center">

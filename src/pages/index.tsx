@@ -36,6 +36,8 @@ export default function Home() {
     </div>
   ));
 
+  console.log(new Date().toLocaleDateString());
+
   let nums;
 
   return (

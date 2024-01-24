@@ -154,8 +154,8 @@ QueryParams) {
           className="absolute w-[400px] h-[0px] bg-white left-[350px] overflow-hidden duration-200 shadow-xl z-10"
         >
           <p className="p-[10px]">
-            Losujesz wszystkie możliwe liczby (tak naprawdę od 0 - 99) i ile
-            chcesz, nawet se czas możesz skrócić jak prawdziwy madafaka...
+            Losujesz wszystkie możliwe liczby (tak naprawdę od 0 - 99) i ile chcesz, nawet se czas
+            możesz skrócić jak prawdziwy madafaka...
           </p>
         </div>
       </div>
