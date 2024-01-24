@@ -255,7 +255,10 @@ export default function Account() {
               <div className="flex">
                 <p className="px-[5px] h-[42px] leading-[42px]">{index + 1}.</p>
                 {i.Numbers.map((number: any) => (
-                  <div className="text-[30px] text-white bg-green-400 p-[10px] border min-w-[42px] h-[42px] mr-[5px] flex justify-center items-center rounded-[10px]">
+                  <div
+                    key={i}
+                    className="text-[30px] text-white bg-green-400 p-[10px] border min-w-[42px] h-[42px] mr-[5px] flex justify-center items-center rounded-[10px]"
+                  >
                     {number}
                   </div>
                 ))}
