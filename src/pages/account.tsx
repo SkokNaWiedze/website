@@ -4,7 +4,7 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import HeaderAccount from "@/components/headerAccount";
 import cookie from "cookie";
 
-export default function account() {
+export default function Account() {
   const [numersList, setNumbersLits] = useState<any | null>([]);
   const [actualNumber, setActualNumber] = useState<any>();
   const [numbersFromDataBase, setNumbersFromDataBase] = useState([]);
