@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaRegCheckCircle } from "react-icons/fa";
 
-export default function login() {
+export default function Login() {
   const [login, setLogin] = useState("");
   const [pass, setPass] = useState();
   const [isLoginClicked, setIsLoginClicked] = useState(false);
