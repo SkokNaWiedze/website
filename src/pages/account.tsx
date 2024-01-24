@@ -2,7 +2,6 @@ import React, { use, useEffect, useState } from "react";
 import { IoIosArrowDropupCircle } from "react-icons/io";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import HeaderAccount from "@/components/headerAccount";
-import cookie from "cookie";
 
 export default function Account() {
   const [numersList, setNumbersLits] = useState<any | null>([]);
