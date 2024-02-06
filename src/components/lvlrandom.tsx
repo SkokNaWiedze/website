@@ -156,28 +156,31 @@ export default function NumbersRandom({
   const DataFromTeacher = (
     <div
       ref={setsFromTeacherPopUp}
-      className="absolute w-[0px] bottom-0 z-20 bg-white flex flex-col items-start justify-start shadow-[3px_3px_10px_0px_rgba(0,0,0,0.3)] p-[0px] rounded-[10px] overflow-hidden h-[0px] duration-200"
+      className="absolute w-[0px] bottom-0 z-20 bg-[#7856B8] flex flex-col items-start justify-between shadow-[3px_3px_10px_0px_rgba(0,0,0,0.3)] rounded-[10px] overflow-hidden h-[0px] duration-200"
     >
-      <div className="w-full h-[30px] text-left font-semibold text-[20px] mb-[10px]">
+      <div className="w-full h-[30px] text-left font-normal text-[20px] mb-[10px] text-white ml-[10px]">
         {" "}
         Wybierz zestaw od nauczyciela
       </div>
       <div
         onClick={closePopUpWithSetsFromTeacher}
-        className="absolute right-[5px] border w-[20px] h-[20px] text-center leading-[18px] bg-red-500 text-white cursor-pointer"
+        className="absolute right-[10px] top-[10px] w-[20px] h-[20px] text-center leading-[18px] bg-red-500 text-white cursor-pointer rounded-[5px]"
       >
         X
       </div>
-      <div className="flex">
+      <div className="flex shadow-xl h-[200px] w-[99%] flex-wrap items-start justify-start content-start bg-white/[0.1] rounded-[10px]">
         {setsFromTeacher.map((set: any) => (
           <div
             key={set}
             onClick={(e) => chosingSetFromTeacher(set.table_name)}
-            className="border px-[5px] py-[2px] h-[30px] m-[5px] cursor-pointer bg-green-500 text-white rounded-[5px]"
+            className="border px-[5px] py-[2px] h-[30px] m-[5px] cursor-pointer bg-white text-gray-500 rounded-[5px]"
           >
             {set.table_name}
           </div>
         ))}
+      </div>
+      <div className="border h-[70px] w-[99%] mx-auto bg-white/[0.9] rounded-[10px] px-[10px] flex justify-center">
+        <Time howMuchTime={howMuchTime} setHowMuchTime={setHowMuchTime} />
       </div>
     </div>
   );
