@@ -17,7 +17,7 @@ export default function HeaderAccount() {
   };
 
   return (
-    <div className="w-[80%] h-full mx-auto flex justify-between">
+    <div className="w-[1050px] h-full mx-auto flex justify-between">
       <Image
         src="/logo.jpeg"
         alt="skok na wiedzę"
