@@ -174,7 +174,7 @@ export default function Counting({
             : "bg-white h-[0px] w-[700px] overflow-hidden fixed top-[50px]"
         }
       >
-        <audio ref={music} src="/victory.wav"></audio>
+        <audio ref={music} src="/victory.mp3"></audio>
         {isExploding === true && <ConfettiExplosion {...largeProps} />}
         <div
           className="absolute left-0 top-0 w-[20px] h-[25px] text-[20px]"
