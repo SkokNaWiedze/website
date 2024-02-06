@@ -512,7 +512,7 @@ export default function Account() {
 
   return (
     <div>
-      {isDataLoaded === true && (
+      {isDataLoaded === false && (
         <div
           ref={loader}
           className="fixed w-screen h-screen bg-white/[0.7] z-50 flex items-center justify-center"
