@@ -508,8 +508,8 @@ export default function Account() {
       await getDataFromDataBase();
       await getSetsAndNamesFromDB();
       await getSharedTables();
-      await handleFormatSets();
       setIsDataLoaded(true);
+      await handleFormatSets();
     };
 
     go();
