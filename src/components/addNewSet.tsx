@@ -49,7 +49,7 @@ export default function AddNewSet({ setIsDataLoaded, sets, owner, dataFromDB, ne
       badName.current.style.display = "block";
     }
 
-    console.log(result.status);
+    // console.log(result.status);
   };
 
   const addingNewSets = async (e: any) => {
@@ -66,7 +66,7 @@ export default function AddNewSet({ setIsDataLoaded, sets, owner, dataFromDB, ne
     });
 
     newTable(name);
-    console.log("new Table added");
+    // console.log("new Table added");
 
     let data = await fetch("/api/addNewTable", {
       method: "POST",
@@ -80,8 +80,6 @@ export default function AddNewSet({ setIsDataLoaded, sets, owner, dataFromDB, ne
     sets.current.style.display = "none";
     setName("");
   };
-
-  console.log(name?.length);
 
   return (
     <div>

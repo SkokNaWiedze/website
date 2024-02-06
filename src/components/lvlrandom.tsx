@@ -77,11 +77,11 @@ export default function NumbersRandom({
 
     for (;;) {
       if (result < 0 || result > 9) {
-        console.log("calculating, number is " + result);
+        // console.log("calculating, number is " + result);
         (num = Math.round((Math.random() * 2 - 1) * 9)), console.log("new num is " + num);
         result = firstNumber + num;
       } else {
-        console.log("returning " + num);
+        // console.log("returning " + num);
         return num;
       }
     }

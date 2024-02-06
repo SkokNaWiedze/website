@@ -96,8 +96,8 @@ export default function Counting({
       suma = suma + i;
     });
 
-    console.log(suma);
-    console.log(answer);
+    // console.log(suma);
+    // console.log(answer);
 
     if (parseInt(answer) === suma) {
       setIsExploding(true);

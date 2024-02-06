@@ -55,6 +55,7 @@ export default function Account() {
     setUserSetsData(returned?.NumbersActiveData);
     // console.log(returned);
     setOwnerSets(setsForUserFromDataBase);
+    setIsDataLoaded(true);
   };
 
   const getActiveSets = (returned: any) => {
@@ -361,7 +362,7 @@ export default function Account() {
     });
 
     setYourTables(SharedResults);
-    setIsDataLoaded(true);
+    // setIsDataLoaded(true);
   };
 
   //creating input matrix
@@ -507,11 +508,14 @@ export default function Account() {
     const go = async () => {
       console.log("use Effect");
       await getDataFromDataBase();
+      console.log("1");
       await getSetsAndNamesFromDB();
-      await getSharedTables();
+      console.log("2");
+      // await getSharedTables();
+      console.log("3");
       await handleFormatSets();
+      console.log("4");
     };
-
     go();
   }, [inputData, newTable, LoggedUser]);
 

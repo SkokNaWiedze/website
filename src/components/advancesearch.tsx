@@ -64,7 +64,7 @@ export default function Advancesearch({
   };
 
   const hadleInputData = (e: any) => {
-    console.log(answer);
+    // console.log(answer);
     setAnswer(parseInt(e.target.value));
   };
 
@@ -86,10 +86,7 @@ export default function Advancesearch({
       </div>
       <div className="w-full flex">
         <div className="w-[300px]">
-          <Numbers
-            howManyNumbers={howManyNumbers}
-            setHowManyNumbers={setHowManyNumbers}
-          />
+          <Numbers howManyNumbers={howManyNumbers} setHowManyNumbers={setHowManyNumbers} />
           <Complexity complexity={complexity} setComplexity={setComplexity} />
         </div>
         <div className="w-full flex justify-center items-center ">
