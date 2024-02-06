@@ -280,10 +280,10 @@ export default function Account() {
   const YourSets = userSetsData?.map((i: any) => (
     <div key={i} className="flex my-[10px] justify-between py-[5px]">
       <div className="flex items-start border-b pb-[10px]">
-        <div className="bg-green-400 h-[30px] w-[200px] px-[10px] rounded-[10px] text-[20px] text-white">
+        <div className="bg-green-400 h-[30px] w-[150px] px-[10px] rounded-[10px] text-[20px] text-white">
           {i.table_name}
         </div>
-        <div className="flex flex-wrap text-white w-[620px]">
+        <div className="flex flex-wrap text-white w-[580px]">
           {i.numbers.length > 0 ? (
             i.numbers.map((n: any) => (
               <div key={n} className="m-[3px] h-[30px] text-[14px] flex bg-[#0A347A]  p-[4px]">
@@ -429,7 +429,7 @@ export default function Account() {
       <div className="w-[150px] h-[40px] flex my-[5px]">
         {el.map((i: any, cellIndex: number) => (
           <input
-            key={i}
+            key={cellIndex}
             onChange={(e) => handleAddValue(e, rowIndex, cellIndex)}
             className={
               i !== null && i !== ""
@@ -467,7 +467,6 @@ export default function Account() {
   };
 
   const addNewSetsToExistingTable = async (e: any) => {
-    loader.current.style.display = "flex";
     // e.preventDefault();
     console.log("wysyłam");
 
@@ -570,10 +569,10 @@ export default function Account() {
       <div className="fixed w-screen bg-white shadow-md z-20">
         <HeaderAccount />
       </div>
-      <p className="mb-[20px] pt-[100px] font-bold text-[20px] w-[77%] m-auto">
+      <p className="mb-[20px] pt-[100px] font-bold text-[20px] m-auto w-[1050px]">
         Sekcja dodawania liczb do bazy:
       </p>
-      <div className="w-[80%] mx-auto min-h-[100px] my-[10px] rounded-[10px] flex">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px] rounded-[10px] flex">
         <div
           className="p-[10px] shadow-xl rounded-[10px] mx-[10px] w-[600px]"
           // onSubmit={sendNumbers}
@@ -705,7 +704,7 @@ export default function Account() {
           <div>{FormatedSeries}</div>
         </div>
       </div>
-      <div className="w-[80%] mx-auto min-h-[100px] my-[10px] rounded-[10px] shadow-xl">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px] rounded-[10px] shadow-xl">
         <div className="p-[10px]">
           <div className="flex w-full justify-between">
             <div>
@@ -715,7 +714,7 @@ export default function Account() {
           </div>
         </div>
       </div>
-      <div className="w-[80%] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl">
         <div className="p-[10px]">
           <div className="flex w-full justify-between">
             <div>
@@ -741,7 +740,7 @@ export default function Account() {
           </div> */}
         </div>
       </div>
-      <div className="w-[80%] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl">
         <div className="p-[10px]">
           <p className="mb-[20px] font-bold text-[20px]">
             Zestawy udostepnione dla Ciebie: (wkrótce)
@@ -781,7 +780,7 @@ export default function Account() {
       </div>
       <div
         id="numbers-from-data-base"
-        className="w-[80%] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl p-[10px]"
+        className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl p-[10px]"
       >
         <p className="mb-[20px] font-bold text-[20px]">Zestawy liczb w bazie:</p>
         <div id="data=base">
