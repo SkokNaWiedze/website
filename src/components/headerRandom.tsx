@@ -36,7 +36,7 @@ export default function HeaderRandom() {
           <div className="flex items-center justify-center px-[17px] py-[5px] rounded-[10px] cursor-pointer">
             <Link
               href="/account"
-              className="mx-[10px] px-[10px] bg-green-500/[0.2] h-[40px] flex items-center justify-center rounded-[10px] font-semibold"
+              className="mx-[10px] px-[10px] bg-green-500/[0.2] h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
             >
               Panel nauczyciela
             </Link>

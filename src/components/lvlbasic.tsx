@@ -100,7 +100,7 @@ export default function NumbersBasic({
   // console.log(numbers);
 
   const handleInfodescStarter = () => {
-    descBasic.current.style.height = "220px";
+    descBasic.current.style.height = "260px";
     descBasic.current.style.border = "0.3px solid black";
   };
 
@@ -135,9 +135,10 @@ export default function NumbersBasic({
           }
         >
           <p className="p-[10px]">
-            Jeśli jesteś mężczyzną, który lubi uprawiać seks w środku lasu, parku, koniecznie na
-            ławce w sąsiedztwie głośnej autostrady dla dodania pikanterii - zgłoś się do lekarza.
-            Jeśli jesteś kobietą zgłoś się do twórcy tej aplikacji.
+            Losujesz 4 liczby nie większe niż 9 i nie mniejsza niż (- 9). Wynik zawsze jest dodani,
+            wynik pośredni nigdy nie jest mniejszy niż 0, wynik całkowity to liczba z zakresu 0-9.
+            Zadania z tego poziomu są nieco większym wyzwaniem, które pozwoli Ci zrobić kolejne
+            kroki na drodze nauki mentalnego liczenia.
           </p>
         </div>
       </div>

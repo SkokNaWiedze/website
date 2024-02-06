@@ -101,7 +101,7 @@ export default function NumbersStarter({
   // console.log(numbers);
 
   const handleInfodescStarter = () => {
-    descStarter.current.style.height = "200px";
+    descStarter.current.style.height = "240px";
     descStarter.current.style.border = "0.3px solid black";
   };
 
@@ -136,9 +136,10 @@ export default function NumbersStarter({
           }
         >
           <p className="p-[10px]">
-            Losujesz 4 liczby nie większe niż 4 i nie mniejsza niż (- 4). Wynik zawsze jest dodani i
-            nie większy niż 4. Dzięki zadaniom z tego poziomu zrobisz pierwsze kroki i zaczniesz
-            uczyć się metodą Jokhigidżan Sensei. <b>Polecam - Karola z Opola</b>
+            Losujesz 4 liczby nie większe niż 4 i nie mniejsza niż (- 4). Wynik zawsze jest dodani,
+            wynik pośredni nigdy nie jest mniejszy niż 0, wynik całkowity to liczba z zakresu 0-4.
+            Dzięki zadaniom z tego poziomu zrobisz pierwsze kroki w drodze nauki mentalnego
+            liczenia.
           </p>
         </div>
       </div>

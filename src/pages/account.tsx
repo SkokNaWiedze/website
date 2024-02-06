@@ -179,7 +179,7 @@ export default function Account() {
     setInputData(newArray);
   };
 
-  const handleNumbersSets = async (e: any, table_name: any, status: any) => {
+  const handleNumbersSets = async (e: any, table_name: any) => {
     // e.preventDefault();
     console.log(table_name);
     let query = JSON.stringify({
@@ -228,7 +228,10 @@ export default function Account() {
           className="px-[5px] bg-green-500 m-[5px] rounded-[5px] flex justify-center items-center"
         >
           {s}
-          <IoIosCloseCircleOutline className="ml-[5px] cursor-pointer duration-200 hover:text-red-600" />
+          <IoIosCloseCircleOutline
+            onClick={(e: any) => handleNumbersSets(e, s)}
+            className="ml-[5px] cursor-pointer duration-200 hover:text-red-600"
+          />
         </div>
       ))}
     </div>
@@ -323,7 +326,7 @@ export default function Account() {
           <div id="buttons-wrapper" className="flex ">
             <div
               className=" text-white  h-[25px]"
-              onClick={(e) => handleNumbersSets(e, i.table_name, i.isActive)}
+              onClick={(e) => handleNumbersSets(e, i.table_name)}
             >
               {i.isActive === false && (
                 <p className="cursor-pointer w-[130px] text-center bg-green-500">Aktywuj</p>
@@ -433,8 +436,8 @@ export default function Account() {
             onChange={(e) => handleAddValue(e, rowIndex, cellIndex)}
             className={
               i !== null && i !== ""
-                ? "border-2 border-green-500 mx-[3px] w-[40px] text-center text-white rounded-[10px] bg-green-500"
-                : "border-2 border-gray-700 mx-[3px] w-[40px] text-center rounded-[10px]"
+                ? "border border-green-500 mx-[3px] w-[40px] text-center text-white rounded-[10px] bg-green-500"
+                : "border border-gray-700 mx-[3px] w-[40px] text-center rounded-[10px]"
             }
           ></input>
         ))}
@@ -582,14 +585,14 @@ export default function Account() {
               <p className="leading-2">Ile serii?</p>
               <div className="flex items-center">
                 <div
-                  className="text-[30px] cursor-pointer border border-gray-900 rounded-[50%] w-[30px] h-[30px] text-center leading-[24px]"
+                  className="text-[30px] cursor-pointer border-gray-900 bg-green-500/[0.2] rounded-[50%] w-[30px] h-[30px] text-center leading-[24px] hover:bg-[#7856B8] hover:text-white duration-200"
                   onClick={handleIncrisingRows}
                 >
                   +
                 </div>
                 <div className="text-[30px] mx-[10px]">{rows}</div>
                 <div
-                  className="text-[30px] cursor-pointer border border-gray-900 rounded-[50%] w-[30px] h-[30px] text-center leading-[24px]"
+                  className="text-[30px] cursor-pointer border-gray-900 bg-green-500/[0.2] rounded-[50%] w-[30px] h-[30px] text-center leading-[24px] hover:bg-[#7856B8] hover:text-white duration-200"
                   onClick={handleDecrisingRows}
                 >
                   -
@@ -600,14 +603,14 @@ export default function Account() {
               <p className="leading-2">Ile max liczb w zestawie?</p>
               <div className="flex items-center">
                 <div
-                  className="text-[30px] cursor-pointer border border-gray-900 rounded-[50%] w-[30px] h-[30px] text-center leading-[24px]"
+                  className="text-[30px] cursor-pointer border-gray-900 bg-green-500/[0.2] rounded-[50%] w-[30px] h-[30px] text-center leading-[24px] hover:bg-[#7856B8] hover:text-white duration-200"
                   onClick={handleIncrisingCols}
                 >
                   +
                 </div>
                 <div className="text-[30px] mx-[10px]">{cols}</div>
                 <div
-                  className="text-[30px] cursor-pointer border border-gray-900 rounded-[50%] w-[30px] h-[30px] text-center leading-[24px]"
+                  className="text-[30px] cursor-pointer border-gray-900 bg-green-500/[0.2] rounded-[50%] w-[30px] h-[30px] text-center leading-[24px] hover:bg-[#7856B8] hover:text-white duration-200"
                   onClick={handleDecrisingCols}
                 >
                   -
@@ -806,7 +809,7 @@ export default function Account() {
                 </div>
                 <div
                   className=" text-white  h-[25px]"
-                  onClick={(e) => handleNumbersSets(e, i.Numbers, i.isActive)}
+                  onClick={(e) => handleNumbersSets(e, i.Numbers)}
                 >
                   {i.isActive === false && (
                     <p className="cursor-pointer w-[130px] text-center bg-green-500">
