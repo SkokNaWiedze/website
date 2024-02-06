@@ -5,7 +5,7 @@ export async function Logout(req: NextApiRequest, res: NextApiResponse) {
   await res.setHeader(
     "Set-Cookie",
     await cookie.serialize("_bagagwa", String("null"), {
-      httpOnly: true,
+      // httpOnly: true,
       maxAge: 1,
       path: "/",
     }),

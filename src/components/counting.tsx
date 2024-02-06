@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
+import Sound from "react-sound";
 
 interface Props {
   startCounting: any;
@@ -63,6 +64,8 @@ export default function Counting({
   // const counter: any = useRef();
   // const result: any = useRef();
 
+  const music: any = useRef();
+
   const handleClosingAnswer = () => {
     // setIsExploding(false);
     setTrigger(false);
@@ -101,6 +104,7 @@ export default function Counting({
 
     if (parseInt(answer) === suma) {
       setIsExploding(true);
+      music.current.play();
     }
   };
 
@@ -170,6 +174,7 @@ export default function Counting({
             : "bg-white h-[0px] w-[700px] overflow-hidden fixed top-[50px]"
         }
       >
+        <audio ref={music} src="/victory.wav"></audio>
         {isExploding === true && <ConfettiExplosion {...largeProps} />}
         <div
           className="absolute left-0 top-0 w-[20px] h-[25px] text-[20px]"

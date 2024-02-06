@@ -20,7 +20,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       await res.setHeader(
         "Set-Cookie",
         cookie.serialize("_bagagwa", String(`${req.body.login}_${SessionID}`), {
-          httpOnly: true,
+          // httpOnly: true,
           maxAge: 60 * 60 * 24 * 7, // 1 week, 604800000 ms,
           path: "/",
         }),

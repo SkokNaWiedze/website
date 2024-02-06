@@ -120,7 +120,7 @@ export default function Levels({
   };
 
   return (
-    <div className="w-full flex justify-center items-center h-full relative">
+    <div className="w-full flex justify-center items-center h-[80%] relative">
       <div className="h-auto w-[700px] mx-auto relative ">
         <div className="flex">
           <div className="w-1/2">

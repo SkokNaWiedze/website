@@ -10,6 +10,7 @@ import Levels from "@/components/levels";
 import NumbersStarter from "../components/lvlstarter";
 import Advancesearch from "@/components/advancesearch";
 import Counting from "@/components/counting";
+import Sound from "react-sound";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -120,8 +121,6 @@ export default function Home() {
 
     get();
   }, [activeSet, activeSetNumber]);
-
-  console.log(numbers);
 
   return (
     <div className="relative w-screen h-[85vh]">

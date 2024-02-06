@@ -111,7 +111,7 @@ export default function NumbersStarter({
   };
 
   return (
-    <div className="my-[10px] flex items-center relative">
+    <div className="my-[10px] flex items-center relative w-[90vw] md:w-auto">
       <div
         className={
           levelChoosed === 1
