@@ -233,11 +233,8 @@ export default function Account() {
     <div key={i} className="flex my-[10px] justify-between py-[5px]">
       <div className="flex items-start">
         {i.numbers.map((sets: any, index: any) => (
-          <div className="flex">
-            <div
-              key={sets}
-              className="text-[30px] text-white p-[10px] border min-w-[42px] min-h-[42px] mr-[5px] flex justify-start items-center rounded-[10px]"
-            >
+          <div key={sets} className="flex">
+            <div className="text-[30px] text-white p-[10px] border min-w-[42px] min-h-[42px] mr-[5px] flex justify-start items-center rounded-[10px]">
               {" "}
               <div className="flex border-red-900 justify-start">
                 <div className="bg-green-400 h-[30px] px-[10px] rounded-[10px] text-[20px]">
