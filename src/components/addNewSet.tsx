@@ -55,7 +55,7 @@ export default function AddNewSet({ loader, sets, owner, dataFromDB, newTable }:
   const addingNewSets = async (e: any) => {
     // e.preventDefault();
     // router.push("/account", undefined, { scroll: false });
-    loader.current.style.display = "flex";
+    // loader.current.style.display = "flex";
     const query = JSON.stringify({
       owner: owner,
       table_name: name,

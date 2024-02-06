@@ -18,7 +18,7 @@ export default function Account() {
   const [cols, setCols] = useState(3);
 
   const [inputData, setInputData] = useState<any>(
-    Array.from({ length: rows }, () => Array.from({ length: 3 }, () => null)),
+    Array.from({ length: rows }, () => Array.from({ length: cols }, () => null)),
   );
 
   const [clearedInputData, setClearedInputData] = useState<any>();
@@ -33,6 +33,7 @@ export default function Account() {
   const [namesOfAllSets, setNamesOfAllSets] = useState<any | null>([]);
   const [yourTables, setYourTables] = useState();
   const [ownersSets, setOwnerSets] = useState();
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   const { LoggedUser, setLoggedUser } = useContext(AppContext);
   // console.log(LoggedUser);
@@ -54,6 +55,7 @@ export default function Account() {
     setUserSetsData(returned?.NumbersActiveData);
     // console.log(returned);
     setOwnerSets(setsForUserFromDataBase);
+    setIsDataLoaded(true);
   };
 
   const getActiveSets = (returned: any) => {
@@ -249,7 +251,7 @@ export default function Account() {
   ));
 
   const handleDeletingSetFromDB = async (e: any, table_name: any) => {
-    loader.current.style.display = "flex";
+    // loader.current.style.display = "flex";
     let query = JSON.stringify({
       owner: LoggedUser,
       table_name: table_name,
@@ -397,7 +399,7 @@ export default function Account() {
     setClearedInputData(filteredArrayAll);
   };
 
-  const kolo = (
+  const FormatedSeries = (
     <div className="flex flex-col justify-center items-start">
       {clearedInputData?.map((i: any, index: number) => (
         <div key={i} className="flex text-[20px]">
@@ -418,12 +420,11 @@ export default function Account() {
   );
 
   let matrixOfInputs = inputData.map((el: any, rowIndex: number) => (
-    <div key={el} className="flex items-center">
+    <div className="flex items-center">
       <p className="px-[5px] w-[30px] text-[22px]">{rowIndex + 1}</p>
       <div className="w-[150px] h-[40px] flex my-[5px]">
         {el.map((i: any, cellIndex: number) => (
           <input
-            key={i}
             onChange={(e) => handleAddValue(e, rowIndex, cellIndex)}
             className={
               i !== null && i !== ""
@@ -465,8 +466,6 @@ export default function Account() {
     // e.preventDefault();
     console.log("wysyłam");
 
-    setInputData(Array.from({ length: rows }, () => Array.from({ length: 3 }, () => null)));
-
     let query = JSON.stringify({
       owner: LoggedUser,
       table: selectedOptionSets.label,
@@ -500,11 +499,10 @@ export default function Account() {
     infoAboutSets.current.style.display = "none";
   };
 
-  console.log(selectedOptionSets);
+  console.log(inputData);
 
   useEffect(() => {
     console.log("use Effect");
-    // loader.current.style.display = "none";
     getDataFromDataBase();
     getSetsAndNamesFromDB();
     getSharedTables();
@@ -513,30 +511,32 @@ export default function Account() {
 
   return (
     <div>
-      <div
-        ref={loader}
-        className="hidden fixed w-screen h-screen bg-white/[0.7] z-50 items-center justify-center"
-      >
-        <div role="status">
-          <svg
-            aria-hidden="true"
-            className="w-[100px] h-[100px] text-gray-200 animate-spin dark:text-red-100 fill-green-600 rounded-[50%]"
-            viewBox="0 0 100 101"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-              fill="currentColor"
-            />
-            <path
-              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-              fill="currentFill"
-            />
-          </svg>
-          <span className="sr-only">Loading...</span>
+      {isDataLoaded === false && (
+        <div
+          ref={loader}
+          className="fixed w-screen h-screen bg-white/[0.7] z-50 items-center justify-center"
+        >
+          <div role="status">
+            <svg
+              aria-hidden="true"
+              className="w-[100px] h-[100px] text-gray-200 animate-spin dark:text-red-100 fill-green-600 rounded-[50%]"
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                fill="currentColor"
+              />
+              <path
+                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                fill="currentFill"
+              />
+            </svg>
+            <span className="sr-only">Loading...</span>
+          </div>
         </div>
-      </div>
+      )}
       <div
         ref={newSets}
         className="fixed hidden w-screen h-screen bg-gray-700/[0.7] z-30 items-center justify-center"
@@ -690,7 +690,7 @@ export default function Account() {
         </div>
         <div className="flex flex-col pt-[10px] shadow-xl rounded-[10px] w-[500px] text-[20px] font-semibold pl-[10px] mb-[0px]">
           <p>Serie, które zostaną dodane: </p>
-          <div>{kolo}</div>
+          <div>{FormatedSeries}</div>
         </div>
       </div>
       <div className="w-[80%] mx-auto min-h-[100px] my-[10px] rounded-[10px] shadow-xl">
