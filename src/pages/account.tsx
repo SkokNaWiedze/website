@@ -420,11 +420,12 @@ export default function Account() {
   );
 
   let matrixOfInputs = inputData.map((el: any, rowIndex: number) => (
-    <div className="flex items-center">
+    <div key={rowIndex} className="flex items-center">
       <p className="px-[5px] w-[30px] text-[22px]">{rowIndex + 1}</p>
       <div className="w-[150px] h-[40px] flex my-[5px]">
         {el.map((i: any, cellIndex: number) => (
           <input
+            key={i}
             onChange={(e) => handleAddValue(e, rowIndex, cellIndex)}
             className={
               i !== null && i !== ""
