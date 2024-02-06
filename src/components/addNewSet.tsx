@@ -6,10 +6,10 @@ interface Props {
   owner: any;
   dataFromDB: any;
   newTable: any;
-  loader: any;
+  setIsDataLoaded: any;
 }
 
-export default function AddNewSet({ loader, sets, owner, dataFromDB, newTable }: Props) {
+export default function AddNewSet({ setIsDataLoaded, sets, owner, dataFromDB, newTable }: Props) {
   const [name, setName] = useState<any>(null);
   const [isNameFree, setIsNameFree] = useState<any>(false);
 
@@ -21,6 +21,7 @@ export default function AddNewSet({ loader, sets, owner, dataFromDB, newTable }:
   const startTyping: any = useRef();
 
   const checkIfTableNameExists = async (e: any) => {
+    setIsDataLoaded(false);
     setIsNameFree(false);
     // addTableButton.current.style.display = "none";
     addTableButton.current.disabled = true;

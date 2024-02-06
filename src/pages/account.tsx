@@ -118,6 +118,7 @@ export default function Account() {
   ];
 
   const deleteNumbers = async (e: any, Numbers: any) => {
+    setIsDataLoaded(false);
     let query = await JSON.stringify({
       Numbers: Numbers,
     });
@@ -553,7 +554,7 @@ export default function Account() {
           dataFromDB={getDataFromDataBase}
           owner={LoggedUser}
           newTable={setNewTable}
-          loader={loader}
+          setIsDataLoaded={setIsDataLoaded}
         />
       </div>
       <div className="fixed w-screen bg-white shadow-md z-20">
