@@ -21,7 +21,6 @@ export default function AddNewSet({ setIsDataLoaded, sets, owner, dataFromDB, ne
   const startTyping: any = useRef();
 
   const checkIfTableNameExists = async (e: any) => {
-    setIsDataLoaded(false);
     setIsNameFree(false);
     // addTableButton.current.style.display = "none";
     addTableButton.current.disabled = true;
@@ -54,6 +53,7 @@ export default function AddNewSet({ setIsDataLoaded, sets, owner, dataFromDB, ne
   };
 
   const addingNewSets = async (e: any) => {
+    setIsDataLoaded(false);
     // e.preventDefault();
     // router.push("/account", undefined, { scroll: false });
     // loader.current.style.display = "flex";

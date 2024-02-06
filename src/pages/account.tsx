@@ -55,7 +55,6 @@ export default function Account() {
     setUserSetsData(returned?.NumbersActiveData);
     // console.log(returned);
     setOwnerSets(setsForUserFromDataBase);
-    setIsDataLoaded(true);
   };
 
   const getActiveSets = (returned: any) => {
@@ -504,11 +503,16 @@ export default function Account() {
   console.log(inputData);
 
   useEffect(() => {
-    console.log("use Effect");
-    getDataFromDataBase();
-    getSetsAndNamesFromDB();
-    getSharedTables();
-    handleFormatSets();
+    const go = async () => {
+      console.log("use Effect");
+      await getDataFromDataBase();
+      await getSetsAndNamesFromDB();
+      await getSharedTables();
+      await handleFormatSets();
+      setIsDataLoaded(true);
+    };
+
+    go();
   }, [inputData, newTable, LoggedUser]);
 
   return (
