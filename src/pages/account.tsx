@@ -361,6 +361,7 @@ export default function Account() {
     });
 
     setYourTables(SharedResults);
+    setIsDataLoaded(true);
   };
 
   //creating input matrix
@@ -508,7 +509,6 @@ export default function Account() {
       await getDataFromDataBase();
       await getSetsAndNamesFromDB();
       await getSharedTables();
-      setIsDataLoaded(true);
       await handleFormatSets();
     };
 
