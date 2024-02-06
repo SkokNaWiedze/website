@@ -47,7 +47,6 @@ export default function Login() {
     console.log(ReturnedData);
 
     if (status === 200) {
-      ReturnedData;
 
       setTimeout(() => {
         setIsPassCorrect(true);
@@ -130,8 +129,9 @@ export default function Login() {
           </div>
         )}
         {isPassCorrect === true && (
-          <div className="w-auto mx-auto my-[17px]">
-            <FaRegCheckCircle className="w-8 h-8 text-green-600" />
+          <div className="w-auto mx-auto my-[17px] text-green-600 flex items-center">
+            <FaRegCheckCircle className="w-8 h-8 " />
+            <p className="font-bold ml-[10px] text-[20px]">Przekierowuję...</p>
           </div>
         )}
 

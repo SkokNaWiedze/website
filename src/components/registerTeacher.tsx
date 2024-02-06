@@ -88,7 +88,8 @@ export default function Register() {
         body: data,
       });
 
-      const status = Registration.status;
+      const status = await Registration.status;
+      console.log(status);
 
       if (status === 200) {
         setTimeout(() => {

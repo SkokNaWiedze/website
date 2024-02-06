@@ -80,7 +80,7 @@ export default function Register() {
     if (isLoginExists === false) {
       setIsSearchClicked(true);
 
-      let Registration = await fetch("/api/singUpStudent", {
+      let Registration = await fetch("/api/singUpTeacher", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,12 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { connectMongoDB } from "../../../libs/mongodb";
-import Numbers from "../../../models/numbers";
+import Tables from "../../../models/tables";
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  console.log(req.body);
+export async function ShowActiveNumbersInSets(req: NextApiRequest, res: NextApiResponse) {
+  console.log("shooooooooooooooooow" + req.body.name);
   await connectMongoDB();
-  const NumbersActiveData = await Numbers.find({ isActive: true });
+  const NumbersActiveData = await Tables.find({ owner: req.body.name });
   res.status(200).json({ NumbersActiveData });
 }
 
-export default POST;
+export default ShowActiveNumbersInSets;

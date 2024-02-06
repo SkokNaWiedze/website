@@ -13,6 +13,18 @@ interface QueryParams {
   setHowManyNumbers: React.Dispatch<React.SetStateAction<any>>;
   howMuchTime: any;
   setHowMuchTime: React.Dispatch<React.SetStateAction<any>>;
+  activeSet: any;
+  setActiveSet: React.Dispatch<React.SetStateAction<any>>;
+  setsOfNumbers: any;
+  setSetsOfNumbers: React.Dispatch<React.SetStateAction<any>>;
+  trigger: any;
+  setTrigger: React.Dispatch<React.SetStateAction<any>>;
+  setsFromTeacher: any;
+  setSetsFromTeacher: React.Dispatch<React.SetStateAction<any>>;
+  setsOfNumbersLength: any;
+  setSetsOfNumbersLength: React.Dispatch<React.SetStateAction<any>>;
+  activeSetNumber: any;
+  setActiveSetNumber: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export default function NumbersRandom({
@@ -26,8 +38,21 @@ export default function NumbersRandom({
   setHowManyNumbers,
   howMuchTime,
   setHowMuchTime,
+  activeSet,
+  setActiveSet,
+  setsOfNumbers,
+  setSetsOfNumbers,
+  trigger,
+  setTrigger,
+  setsFromTeacher,
+  setSetsFromTeacher,
+  setsOfNumbersLength,
+  setSetsOfNumbersLength,
+  activeSetNumber,
+  setActiveSetNumber,
 }: QueryParams) {
   const descBasic: any = useRef();
+  const setsFromTeacherPopUp: any = useRef();
 
   const [level, setLevel] = useState("starter");
 
@@ -109,8 +134,56 @@ export default function NumbersRandom({
     descBasic.current.style.border = "0px";
   };
 
+  const closePopUpWithSetsFromTeacher = () => {
+    setsFromTeacherPopUp.current.style.width = "0px";
+    setsFromTeacherPopUp.current.style.height = "0px";
+    setsFromTeacherPopUp.current.style.padding = "0px";
+  };
+  const showPopUpWithSetsFromTeacher = () => {
+    setsFromTeacherPopUp.current.style.width = "110%";
+    setsFromTeacherPopUp.current.style.height = "350px";
+    setsFromTeacherPopUp.current.style.padding = "5px";
+  };
+
+  const chosingSetFromTeacher = (table_name: String) => {
+    console.log(table_name);
+    setActiveSet(table_name);
+    setHowManyNumbers(numbers.length + 1);
+    setLevelChoosed(4);
+    closePopUpWithSetsFromTeacher();
+  };
+
+  const DataFromTeacher = (
+    <div
+      ref={setsFromTeacherPopUp}
+      className="absolute w-[0px] bottom-0 z-20 bg-white flex flex-col items-start justify-start shadow-[3px_3px_10px_0px_rgba(0,0,0,0.3)] p-[0px] rounded-[10px] overflow-hidden h-[0px] duration-200"
+    >
+      <div className="w-full h-[30px] text-left font-semibold text-[20px] mb-[10px]">
+        {" "}
+        Wybierz zestaw od nauczyciela
+      </div>
+      <div
+        onClick={closePopUpWithSetsFromTeacher}
+        className="absolute right-[5px] border w-[20px] h-[20px] text-center leading-[18px] bg-red-500 text-white cursor-pointer"
+      >
+        X
+      </div>
+      <div className="flex">
+        {setsFromTeacher.map((set: any) => (
+          <div
+            onClick={(e) => chosingSetFromTeacher(set.table_name)}
+            className="border px-[5px] py-[2px] h-[30px] m-[5px] cursor-pointer bg-green-500 text-white rounded-[5px]"
+          >
+            {set.table_name}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
     <div className="my-[10px] flex items-center relative">
+      {DataFromTeacher}
       <div
         className={
           levelChoosed === 2
@@ -119,13 +192,13 @@ export default function NumbersRandom({
         }
       >
         {/* <Time howMuchTime={howMuchTime} setHowMuchTime={setHowMuchTime} /> */}
-        <div className="w-[30px] h-[30px] ml-[10px] text-[#7856B8]">
+        {/* <div className="w-[30px] h-[30px] ml-[10px] text-[#7856B8]">
           <FaInfoCircle
             className="w-full h-full cursor-pointer"
             onMouseOver={handleInfodescStarter}
             onMouseLeave={handleInfodescStarterHiding}
           />
-        </div>
+        </div> */}
         <div
           ref={descBasic}
           className={
@@ -150,17 +223,15 @@ export default function NumbersRandom({
           ))}
         </div> */}
       </div>
-      <div
-        data-name="basic"
-        className={
-          levelChoosed === 2
-            ? "duration-200 text-center text-white text-[24px] px-[10px] py-[6px] bg-graident-to-r from-[#EB5B98] via-[#0D9D8F] to-[#49DEE6] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10 leading-6"
-            : "duration-200 text-center text-white text-[24px] px-[10px] py-[6px] bg-gradient-to-r from-[#EB5B98] via-[#0D9D8F] to-[#72CF26] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-gradient-to-r hover:from-[#7856B8] hover:to-[#7856B8] hover:duration-200 z-10 leading-6"
-        }
-        onClick={findNumbers}
-      >
-        Zadania od nauczyciela
-      </div>
+      {setsFromTeacher?.length > 0 && (
+        <div
+          data-name="basic"
+          className="duration-200 text-center text-white text-[24px] px-[10px] py-[6px] bg-gradient-to-r from-[#EB5B98] via-[#0D9D8F] to-[#72CF26] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-gradient-to-r hover:from-[#7856B8] hover:to-[#7856B8] hover:duration-200 z-10 leading-6"
+          onClick={showPopUpWithSetsFromTeacher}
+        >
+          Zadania od nauczyciela
+        </div>
+      )}
     </div>
   );
 }

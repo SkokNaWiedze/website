@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
 
 interface Props {
+  startCounting: any;
   actualNumber: any;
   setActualNumber: React.Dispatch<React.SetStateAction<any>>;
   trigger: any;
@@ -18,6 +19,16 @@ interface Props {
   setSum: React.Dispatch<React.SetStateAction<any>>;
   numbers: any;
   setNumbers: React.Dispatch<React.SetStateAction<any>>;
+  activeSet: any;
+  setActiveSet: React.Dispatch<React.SetStateAction<any>>;
+  setsOfNumbers: any;
+  setSetsOfNumbers: React.Dispatch<React.SetStateAction<any>>;
+  activeSetNumber: any;
+  setActiveSetNumber: React.Dispatch<React.SetStateAction<any>>;
+  setsOfNumbersLength: any;
+  setSetsOfNumbersLength: React.Dispatch<React.SetStateAction<any>>;
+  counter: any;
+  result: any;
 }
 
 export default function Counting({
@@ -37,13 +48,23 @@ export default function Counting({
   setSum,
   numbers,
   setNumbers,
+  activeSet,
+  setActiveSet,
+  setsOfNumbers,
+  setSetsOfNumbers,
+  activeSetNumber,
+  setActiveSetNumber,
+  counter,
+  result,
+  startCounting,
+  setsOfNumbersLength,
 }: Props) {
   const number: any = useRef();
-  const counter: any = useRef();
-  const result: any = useRef();
+  // const counter: any = useRef();
+  // const result: any = useRef();
 
   const handleClosingAnswer = () => {
-    setIsExploding(false);
+    // setIsExploding(false);
     setTrigger(false);
     setFinish(false);
     setLevelChoosed(0);
@@ -52,11 +73,13 @@ export default function Counting({
     result.current.style.display = "none";
   };
 
-  const handleNextTsk = () => {
+  const handleNextTask = () => {
     setFinish(false);
     setIsExploding(false);
+    setActiveSetNumber(activeSetNumber + 1);
+    setNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1]);
+    setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length + 1);
     // setTrigger(false);
-    setFinish(false);
     // setLevelChoosed(0);
     // setNumbers([]);
     counter.current.innerHTML = "";
@@ -65,10 +88,6 @@ export default function Counting({
 
   const [isExploding, setIsExploding] = useState(false);
   const [answer, setAnswer] = useState<any | null>(null);
-
-  const checkResult = () => {
-    result.current.style.display = "block";
-  };
 
   const handleAnswer = (e: any) => {
     e.preventDefault();
@@ -80,7 +99,7 @@ export default function Counting({
     console.log(suma);
     console.log(answer);
 
-    if (answer === suma) {
+    if (parseInt(answer) === suma) {
       setIsExploding(true);
     }
   };
@@ -90,50 +109,53 @@ export default function Counting({
     console.log(answer);
   };
 
-  useEffect(() => {
-    if (trigger === true && finish === false) {
-      console.log(trigger);
-      let i = 0;
-      console.log(i);
-      let suma: number = 0;
-      console.log(numbers);
-      setTimeout(() => {
-        const StartCounting = () => {
-          counter.current.style.color = "white";
-          console.log(numbers[i]);
-          setTimeout(() => {
-            counter.current.style.color = "#23c55e";
-          }, howMuchTime - 100);
-          if (i >= 0 && i < howManyNumbers) {
-            counter.current.innerHTML = numbers[i];
-            const data = actualNumber + 1;
-            // console.log(numbers[i]);
-            setActualNumber(numbers[i]);
-            suma = suma + numbers[i];
-            setSum(suma);
-            i++;
-          }
-          if (i === howManyNumbers) {
-            setFinish(true);
-            counter.current.style.color = "#23c55e";
-            result.current.style.display = "block";
-            clearInterval(counting);
-            console.log("koniec");
-          }
-        };
+  // const startCounting = () => {
+  //   if (trigger === true && finish === false) {
+  //     console.log(trigger);
+  //     let i = 0;
+  //     console.log(i);
+  //     let suma: number = 0;
+  //     console.log(numbers);
+  //     setTimeout(() => {
+  //       const StartCounting = () => {
+  //         counter.current.style.color = "white";
+  //         console.log(numbers[i]);
+  //         setTimeout(() => {
+  //           counter.current.style.color = "#23c55e";
+  //         }, howMuchTime - 100);
+  //         if (i >= 0 && i < howManyNumbers) {
+  //           counter.current.innerHTML = numbers[i];
+  //           const data = actualNumber + 1;
+  //           // console.log(numbers[i]);
+  //           setActualNumber(numbers[i]);
+  //           suma = suma + numbers[i];
+  //           setSum(suma);
+  //           i++;
+  //         }
+  //         if (i === howManyNumbers) {
+  //           setFinish(true);
+  //           counter.current.style.color = "#23c55e";
+  //           result.current.style.display = "block";
+  //           clearInterval(counting);
+  //           console.log("koniec");
+  //         }
+  //       };
 
-        const counting = setInterval(StartCounting, howMuchTime);
+  //       const counting = setInterval(StartCounting, howMuchTime);
 
-        StartCounting();
-      }, 2000);
-    }
-  }, [trigger, finish]);
+  //       StartCounting();
+  //     }, 2000);
+  //   }
+  // };
+
+  console.log(activeSetNumber);
+  console.log(setsOfNumbersLength);
 
   const largeProps: ConfettiProps = {
     force: 0.8,
     duration: 3000,
     particleCount: 300,
-    zIndex: 99,
+    zIndex: 999,
     width: 1600,
     colors: ["#041E43", "#1471BF", "#5BB4DC", "#FC027B", "#66D805"],
   };
@@ -144,8 +166,8 @@ export default function Counting({
         ref={number}
         className={
           trigger === true
-            ? "bg-green-500 w-screen h-screen absolute mx-auto top-[0px] left-0 right-0 text-[350px] text-center duration-200 shadow-xl  z-20 text-white flex justify-center items-center flex-col"
-            : "bg-white h-[0px] w-[700px] overflow-hidden absolute top-[50px]"
+            ? "fixed bg-green-500 w-screen h-screen mx-auto top-[0px] left-0 right-0 text-[350px] text-center duration-200 shadow-xl z-20 text-white flex justify-center items-center flex-col overflow-hidden"
+            : "bg-white h-[0px] w-[700px] overflow-hidden fixed  top-[50px]"
         }
       >
         {isExploding === true && <ConfettiExplosion {...largeProps} />}
@@ -192,12 +214,14 @@ export default function Counting({
           <button className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px]">
             Sprawdź wynik
           </button>
-          <div
-            className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px] cursor-pointer"
-            onClick={handleNextTsk}
-          >
-            Następny zestaw
-          </div>
+          {activeSetNumber < setsOfNumbersLength - 1 && (
+            <div
+              className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px] cursor-pointer"
+              onClick={handleNextTask}
+            >
+              Następny zestaw
+            </div>
+          )}
           <div
             className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px] cursor-pointer"
             onClick={handleClosingAnswer}

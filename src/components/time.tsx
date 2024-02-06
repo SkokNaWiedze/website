@@ -23,7 +23,7 @@ export default function Time({ howMuchTime, setHowMuchTime }: QueryParams) {
       <div className="mb-[5px] text-[16px]">
         Czas wyświetlania liczby (sekundy):
       </div>
-      <div className="flex w-full justify-between flex-wrap">
+      <div className="flex w-[260px] justify-between flex-wrap">
         <div
           ref={halfSecond}
           className={

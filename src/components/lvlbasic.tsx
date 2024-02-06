@@ -53,8 +53,7 @@ export default function NumbersBasic({
     for (;;) {
       if (result < 0 || result > 9) {
         console.log("calculating, number is " + result);
-        (num = Math.round((Math.random() * 2 - 1) * 9)),
-          console.log("new num is " + num);
+        (num = Math.round((Math.random() * 2 - 1) * 9)), console.log("new num is " + num);
         result = firstNumber + num;
       } else {
         console.log("returning " + num);
@@ -64,7 +63,7 @@ export default function NumbersBasic({
   };
 
   const findNumbers = async () => {
-    setHowManyNumbers(9);
+    setHowManyNumbers(9)
     setLevelChoosed(2);
     let i = 1;
     let NumsArray: any = [];
@@ -83,7 +82,7 @@ export default function NumbersBasic({
         NumsArray = [...NumsArray, newNumber];
       }
 
-      console.log(NumsArray);
+      // console.log(NumsArray);
     }
     setNumbers(NumsArray);
   };
@@ -136,10 +135,9 @@ export default function NumbersBasic({
           }
         >
           <p className="p-[10px]">
-            Jeśli jesteś mężczyzną, który lubi uprawiać seks w środku lasu,
-            parku, koniecznie na ławce w sąsiedztwie głośnej autostrady dla
-            dodania pikanterii - zgłoś się do lekarza. Jeśli jesteś kobietą
-            zgłoś się do twórcy tej aplikacji.
+            Jeśli jesteś mężczyzną, który lubi uprawiać seks w środku lasu, parku, koniecznie na
+            ławce w sąsiedztwie głośnej autostrady dla dodania pikanterii - zgłoś się do lekarza.
+            Jeśli jesteś kobietą zgłoś się do twórcy tej aplikacji.
           </p>
         </div>
       </div>

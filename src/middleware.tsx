@@ -5,16 +5,19 @@ import type { NextRequest } from "next/server";
 import Session from "../models/sessions";
 
 // This function can be marked `async` if using `await` inside
+
 export async function middleware(request: NextRequest) {
-  let cookie = await request.cookies.get("_bagagwa");
-  // console.log(cookie);
-  // => { name: 'nextjs', value: 'fast', Path: '/' }
+  const cookie = request.cookies.get("_bagagwa");
 
-  let NameFromCookieSpliting = await cookie?.value.split("_");
-  let NameFromCookie = await NameFromCookieSpliting?.[0];
-  let SessionFromCookie = await NameFromCookieSpliting?.[1];
+  console.log(cookie); // => { name: 'nextjs', value: 'fast', Path: '/' }
 
-  let Registration = await fetch("https://skoknawiedze-beta.vercel.app/api/getDataMiddleware", {
+  const NameFromCookieSpliting = cookie?.value.split("_");
+  const NameFromCookie = await NameFromCookieSpliting?.[0];
+  const SessionFromCookie = await NameFromCookieSpliting?.[1];
+
+  console.log("dupa " + NameFromCookie);
+
+  let Registration = await fetch("http://localhost:3000/api/getDataMiddleware", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

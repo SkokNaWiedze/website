@@ -45,18 +45,18 @@ export default function NumbersStarter({
     });
 
     let num = Math.round((Math.random() * 2 - 1) * starterFirstNumber[1]);
-    console.log(Math.random() * 2 - 1);
+    // console.log(Math.random() * 2 - 1);
     let result = firstNumber + num;
-    console.log(result);
+    // console.log(result);
 
     for (;;) {
       if (result < 0 || result > starterNextNumbers[1]) {
         console.log("calculating, number is " + result);
         (num = Math.round((Math.random() * 2 - 1) * starterFirstNumber[1])),
-          console.log("new num is " + num);
-        result = firstNumber + num;
+          // console.log("new num is " + num);
+          (result = firstNumber + num);
       } else {
-        console.log("returning " + num);
+        // console.log("returning " + num);
         return num;
       }
     }
@@ -98,7 +98,7 @@ export default function NumbersStarter({
     }
   };
 
-  console.log(numbers);
+  // console.log(numbers);
 
   const handleInfodescStarter = () => {
     descStarter.current.style.height = "200px";
@@ -136,10 +136,9 @@ export default function NumbersStarter({
           }
         >
           <p className="p-[10px]">
-            Losujesz 4 liczby nie większe niż 4 i nie mniejsza niż (- 4). Wynik
-            zawsze jest dodani i nie większy niż 4. Dzięki zadaniom z tego
-            poziomu zrobisz pierwsze kroki i zaczniesz uczyć się metodą
-            Jokhigidżan Sensei. <b>Polecam - Karola z Opola</b>
+            Losujesz 4 liczby nie większe niż 4 i nie mniejsza niż (- 4). Wynik zawsze jest dodani i
+            nie większy niż 4. Dzięki zadaniom z tego poziomu zrobisz pierwsze kroki i zaczniesz
+            uczyć się metodą Jokhigidżan Sensei. <b>Polecam - Karola z Opola</b>
           </p>
         </div>
       </div>

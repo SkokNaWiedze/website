@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Image from "next/image";
 import NumbersStarter from "@/components/lvlstarter";
@@ -9,6 +9,7 @@ import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
 import Complexity from "./complexity";
 
 interface Props {
+  startCounting: any;
   advanceSearch: any;
   setAdvanceSearch: React.Dispatch<React.SetStateAction<any>>;
   trigger: any;
@@ -27,6 +28,16 @@ interface Props {
   setFinish: React.Dispatch<React.SetStateAction<any>>;
   levelChoosed: any;
   setLevelChoosed: React.Dispatch<React.SetStateAction<any>>;
+  activeSet: any;
+  setActiveSet: React.Dispatch<React.SetStateAction<any>>;
+  setsOfNumbers: any;
+  setSetsOfNumbers: React.Dispatch<React.SetStateAction<any>>;
+  setsFromTeacher: any;
+  setSetsFromTeacher: React.Dispatch<React.SetStateAction<any>>;
+  setsOfNumbersLength: any;
+  setSetsOfNumbersLength: React.Dispatch<React.SetStateAction<any>>;
+  activeSetNumber: any;
+  setActiveSetNumber: React.Dispatch<React.SetStateAction<any>>;
 }
 
 export default function Levels({
@@ -48,6 +59,17 @@ export default function Levels({
   setFinish,
   levelChoosed,
   setLevelChoosed,
+  activeSet,
+  setActiveSet,
+  setsOfNumbers,
+  setSetsOfNumbers,
+  setsFromTeacher,
+  setSetsFromTeacher,
+  setsOfNumbersLength,
+  setSetsOfNumbersLength,
+  activeSetNumber,
+  setActiveSetNumber,
+  startCounting,
 }: Props) {
   const handleAdvanceSearch = () => {
     setAdvanceSearch(true);
@@ -97,13 +119,9 @@ export default function Levels({
     // }, 2000);
   };
 
-  const confetti = () => {
-    setIsExploding(true);
-  };
-
   return (
-    <div className="w-full flex justify-center items-center h-screen relative">
-      <div className="h-auto w-[700px] mx-auto relative">
+    <div className="w-full flex justify-center items-center h-full relative">
+      <div className="h-auto w-[700px] mx-auto relative ">
         <div className="flex">
           <div className="w-1/2">
             <p className="text-[26px] text-center">Wybierz poziom trudności:</p>
@@ -160,6 +178,18 @@ export default function Levels({
               setHowManyNumbers={setHowManyNumbers}
               howMuchTime={howMuchTime}
               setHowMuchTime={setHowMuchTime}
+              activeSet={activeSet}
+              setActiveSet={setActiveSet}
+              setsOfNumbers={setsOfNumbers}
+              setSetsOfNumbers={setSetsOfNumbers}
+              trigger={trigger}
+              setTrigger={setTrigger}
+              setsFromTeacher={setsFromTeacher}
+              setSetsFromTeacher={setSetsFromTeacher}
+              setsOfNumbersLength={setsOfNumbersLength}
+              setSetsOfNumbersLength={setSetsOfNumbersLength}
+              activeSetNumber={activeSetNumber}
+              setActiveSetNumber={setActiveSetNumber}
             />
           </div>
           <div className="w-1/2 flex justify-center items-center">
@@ -175,7 +205,7 @@ export default function Levels({
         >
           <div
             className="bg-[#6AC925] text-[40px] text-white px-[40px] py-[5px] rounded-[40px] cursor-pointer duration-200 hover:bg-[#7856B8]"
-            onClick={handleTrigger}
+            onClick={startCounting}
           >
             Zaczynajmy!
           </div>
