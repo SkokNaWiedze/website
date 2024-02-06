@@ -17,7 +17,7 @@ export async function middleware(request: NextRequest) {
 
   console.log("dupa " + NameFromCookie);
 
-  let Registration = await fetch("http://localhost:3000/api/getDataMiddleware", {
+  let Registration = await fetch("https://skoknawiedze-beta.vercel.app/api/getDataMiddleware", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
