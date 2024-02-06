@@ -235,7 +235,7 @@ export default function Account() {
         {i.numbers.map((sets: any, index: any) => (
           <div className="flex">
             <div
-              key={i}
+              key={sets}
               className="text-[30px] text-white p-[10px] border min-w-[42px] min-h-[42px] mr-[5px] flex justify-start items-center rounded-[10px]"
             >
               {" "}
@@ -284,9 +284,12 @@ export default function Account() {
         <div className="flex flex-wrap text-white w-[620px]">
           {i.numbers.length > 0 ? (
             i.numbers.map((n: any) => (
-              <div className="m-[3px] h-[30px] text-[14px] flex bg-[#0A347A]  p-[4px]">
+              <div key={n} className="m-[3px] h-[30px] text-[14px] flex bg-[#0A347A]  p-[4px]">
                 {n.map((one: any) => (
-                  <div className="h-[20px] p-[10px] rounded-[4px] border leading-[2px] mx-[1px]">
+                  <div
+                    key={one}
+                    className="h-[20px] p-[10px] rounded-[4px] border leading-[2px] mx-[1px]"
+                  >
                     {one}
                   </div>
                 ))}
@@ -400,11 +403,14 @@ export default function Account() {
   const kolo = (
     <div className="flex flex-col justify-center items-start">
       {clearedInputData?.map((i: any, index: number) => (
-        <div className="flex text-[20px]">
+        <div key={i} className="flex text-[20px]">
           <p className="w-[20px]">{index + 1}</p>
           <div className="border-b px-[5px] text-[24px] flex items-center justify-start my-[3px]">
             {i.map((num: number) => (
-              <div className="bg-green-500 text-white mx-[2px] min-w-[30px] h-[30px] text-center leading-[30px] rounded-[7px] text-[24px]">
+              <div
+                key={num}
+                className="bg-green-500 text-white mx-[2px] min-w-[30px] h-[30px] text-center leading-[30px] rounded-[7px] text-[24px]"
+              >
                 {num}
               </div>
             ))}
@@ -415,11 +421,12 @@ export default function Account() {
   );
 
   let matrixOfInputs = inputData.map((el: any, rowIndex: number) => (
-    <div className="flex items-center">
+    <div key={el} className="flex items-center">
       <p className="px-[5px] w-[30px] text-[22px]">{rowIndex + 1}</p>
       <div className="w-[150px] h-[40px] flex my-[5px]">
         {el.map((i: any, cellIndex: number) => (
           <input
+            key={i}
             onChange={(e) => handleAddValue(e, rowIndex, cellIndex)}
             className={
               i !== null && i !== ""

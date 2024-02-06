@@ -155,6 +155,7 @@ export default function NumbersRandom({
 
   const DataFromTeacher = (
     <div
+      key={i}
       ref={setsFromTeacherPopUp}
       className="absolute w-[0px] bottom-0 z-20 bg-white flex flex-col items-start justify-start shadow-[3px_3px_10px_0px_rgba(0,0,0,0.3)] p-[0px] rounded-[10px] overflow-hidden h-[0px] duration-200"
     >
