@@ -515,7 +515,7 @@ export default function Account() {
       {isDataLoaded === false && (
         <div
           ref={loader}
-          className="fixed w-screen h-screen bg-white/[0.7] z-50 items-center justify-center"
+          className="fixed w-screen h-screen bg-white/[0.7] z-50 flex items-center justify-center"
         >
           <div role="status">
             <svg
