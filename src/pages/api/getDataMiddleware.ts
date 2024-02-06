@@ -3,11 +3,11 @@ import { connectMongoDB } from "../../../libs/mongodb";
 import Session from "../../../models/sessions";
 
 export async function GetDataMiddleware(req: NextApiRequest, res: NextApiResponse) {
-  console.log("data middleware" + JSON.stringify(req.body.login));
+  // console.log("data middleware" + JSON.stringify(req.body.login));
   await connectMongoDB();
   const UsersData = await Session.find({ login: req.body.login, session: req.body.session });
 
-  console.log("Data Middle" + JSON.stringify(UsersData));
+  // console.log("Data Middle" + JSON.stringify(UsersData));
 
   const UserLoginLength = await UsersData[0].login.length;
 

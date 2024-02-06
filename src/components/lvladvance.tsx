@@ -163,12 +163,12 @@ QueryParams) {
         data-name="starter"
         className={
           levelChoosed === 3
-            ? "duration-200 text-center text-white text-[40px] px-[10px] py-[6px] bg-[#7856B8] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10"
-            : "duration-200 text-center text-[40px] px-[10px] py-[6px] bg-[#49DEE6] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10"
+            ? "duration-200 text-center text-white text-[20px] px-[10px] py-[6px] bg-[#7856B8] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10"
+            : "duration-200 text-center text-[20px] px-[10px] py-[6px] bg-[#49DEE6] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10"
         }
-        onClick={findNumbers}
+        // onClick={findNumbers}
       >
-        Nowe wyzwania
+        Nowe wyzwania (wkrótce)
       </div>
       {/* <div className="w-[30px] h-[30px] ml-[10px] text-[#7856B8] cursor-pointer">
         <FaInfoCircle

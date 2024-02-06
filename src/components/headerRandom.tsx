@@ -21,8 +21,6 @@ export default function HeaderRandom() {
     }
   };
 
-  console.log(LoggedUser);
-
   return (
     <div className="w-[80%] h-[15vh] mx-auto flex justify-end">
       <div className="flex justify-center items-center">
