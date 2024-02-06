@@ -55,7 +55,9 @@ export default function Account() {
     setUserSetsData(returned?.NumbersActiveData);
     // console.log(returned);
     setOwnerSets(setsForUserFromDataBase);
-    setIsDataLoaded(true);
+    setTimeout(() => {
+      setIsDataLoaded(true);
+    }, 500);
   };
 
   const getActiveSets = (returned: any) => {
