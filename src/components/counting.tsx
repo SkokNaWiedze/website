@@ -96,8 +96,8 @@ export default function Counting({
       suma = suma + i;
     });
 
-    // console.log(suma);
-    // console.log(answer);
+    console.log(suma);
+    console.log(answer);
 
     if (parseInt(answer) === suma) {
       setIsExploding(true);
@@ -167,18 +167,18 @@ export default function Counting({
         className={
           trigger === true
             ? "fixed bg-green-500 w-screen h-screen mx-auto top-[0px] left-0 right-0 text-[350px] text-center duration-200 shadow-xl z-20 text-white flex justify-center items-center flex-col overflow-hidden"
-            : "bg-white h-[0px] w-[700px] overflow-hidden fixed  top-[50px]"
+            : "bg-white h-[0px] w-[700px] overflow-hidden fixed top-[50px]"
         }
       >
         {isExploding === true && <ConfettiExplosion {...largeProps} />}
         <div
-          className="absolute left-0 top-0 w-[20px] h-[30px] text-[20px]"
+          className="absolute left-0 top-0 w-[20px] h-[25px] text-[20px]"
           onClick={handleClosingAnswer}
         >
           X
         </div>
         {trigger === true && finish === false && (
-          <div className="absolute top-[0px] w-screen h-[10px] loader">
+          <div className="absolute top-[0px] w-screen h-[30px] loader">
             <div className="loading-grow"></div>
           </div>
         )}
