@@ -16,7 +16,7 @@ export default function Login() {
   console.log(ExistingCookie);
 
   const checkLoogedUserOnLoad = async () => {
-    console.log("dsa")
+    console.log("dsa");
     const ExistingCookie = await getCookie("_bagagwa");
     console.log(ExistingCookie);
     if (ExistingCookie !== undefined) {
@@ -150,6 +150,9 @@ export default function Login() {
         )}
 
         <div className="w-[70%] mx-auto text-center mt-[5px]">
+          <Link href="/" className="text-green-700 font-bold">
+            Przejdź do aplikacji
+          </Link>
           {/* <p>
             Nie masz konta?&nbsp;
             <Link href="/rejestracja" className="text-green-700 font-bold">
