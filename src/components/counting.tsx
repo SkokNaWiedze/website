@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
-import Sound from "react-sound";
 
 interface Props {
   startCounting: any;
