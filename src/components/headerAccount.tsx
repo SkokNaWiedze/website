@@ -21,7 +21,7 @@ export default function HeaderAccount() {
     });
     const result = await data.json();
     setLoggedUser("");
-    router.replace({ pathname: "/" });
+    router.reload()
   };
 
   return (

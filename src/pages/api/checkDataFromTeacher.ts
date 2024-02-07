@@ -6,7 +6,7 @@ export async function CheckDataFromTeacher(req: NextApiRequest, res: NextApiResp
   // console.log(req.body);
   await connectMongoDB();
   const TablesData = await Tables.find({ isActive: true });
-  console.log(TablesData);
+  // console.log(TablesData);
   if (TablesData.length > 0) {
     res.status(200).json({ msg: TablesData });
   } else {

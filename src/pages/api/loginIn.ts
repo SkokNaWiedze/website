@@ -3,6 +3,7 @@ import { connectMongoDB } from "../../../libs/mongodb";
 import Users from "../../../models/user";
 import Session from "../../../models/sessions";
 import cookie from "cookie";
+import { setCookie } from "cookies-next";
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   // console.log(req.body);
@@ -19,14 +20,21 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
 
       //CHECK IF ANOTHER USER'S Cookie exists, delete it and  session in MongoDB.
 
-      await res.setHeader(
-        "Set-Cookie",
-        cookie.serialize("_bagagwa", String(`${req.body.login}_${SessionID}`), {
-          // httpOnly: true,
-          maxAge: 60 * 60 * 24 * 7, // 1 week, 604800000 ms,
-          path: "/",
-        }),
-      );
+      await setCookie("_bagagwa", String(`${req.body.login}_${SessionID}`), {
+        res,
+        req,
+        path: "/",
+        maxAge: 60 * 60 * 24 * 7,
+      }); // 1 week, 604800000 ms,
+
+      // await res.setHeader(
+      //   "Set-Cookie",
+      //   cookie.serialize("_bagagwa", String(`${req.body.login}_${SessionID}`), {
+      //     // httpOnly: true,
+      //     maxAge: 60 * 60 * 24 * 7, // 1 week, 604800000 ms,
+      //     path: "/",
+      //   }),
+      // );
 
       console.log("cookie seted!");
 

@@ -17,7 +17,11 @@ export default function HeaderRandom() {
       router.push({ pathname: "/logowanie" });
     } else {
       let data = await fetch("/api/logout");
-      router.reload();
+      const results = await data;
+
+      if (results.status === 200) {
+        router.reload();
+      }
     }
   };
 
