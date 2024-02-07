@@ -1,3 +1,4 @@
+"use client";
 import React, { useCallback, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -5,6 +6,7 @@ import Link from "next/link";
 import { IoPersonSharp } from "react-icons/io5";
 import path from "path";
 import { AppContext } from "@/context";
+import { deleteCookie } from "cookies-next";
 
 export default function HeaderRandom() {
   const router = useRouter();
@@ -20,6 +22,11 @@ export default function HeaderRandom() {
       const results = await data;
 
       if (results.status === 200) {
+        await deleteCookie("_bagagwa", {
+          // domain: "skoknawiedze-beta.vercel.app",
+          path: "/",
+          // maxAge: 60 * 60 * 24 * 7,
+        }); // 1 week, 604800000 ms,
         router.reload();
       }
     }
