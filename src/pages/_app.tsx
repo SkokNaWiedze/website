@@ -17,8 +17,6 @@ export default function App({ Component, pageProps }: AppProps) {
     });
     let JsonCookie = await Cookie.json();
 
-    // console.log("LALALA " + JsonCookie);
-
     // split values if cookie exists
     if (JsonCookie.name?.length > 0) {
       const Splited = await JsonCookie.name.split("_");
@@ -49,8 +47,6 @@ export default function App({ Component, pageProps }: AppProps) {
   if (LoggedUser === "") {
     getLoggingData();
   }
-
-  console.log(LoggedUser);
 
   return (
     <AppContext.Provider value={{ LoggedUser, setLoggedUser }}>

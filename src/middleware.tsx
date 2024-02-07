@@ -14,6 +14,7 @@ export async function middleware(request: NextRequest) {
   const NameFromCookieSpliting = cookie?.value.split("_");
   const NameFromCookie = await NameFromCookieSpliting?.[0];
   const SessionFromCookie = await NameFromCookieSpliting?.[1];
+  console.log("acc");
 
   let Registration = await fetch("https://skoknawiedze-beta.vercel.app/api/getDataMiddleware", {
     method: "POST",
@@ -30,13 +31,21 @@ export async function middleware(request: NextRequest) {
   // console.log(ReturnedStatus);
 
   if (ReturnedStatus === 200) {
-    return NextResponse.next();
-  } else {
+    if (request.url.includes("/account")) {
+      console.log("1");
+      return NextResponse.next();
+    } else if (request.url.includes("/logowanie")) {
+      return NextResponse.redirect(new URL("/account", request.url));
+    }
+  } else if (request.url.includes("/account")) {
+    console.log("1");
     return NextResponse.redirect(new URL("/logowanie", request.url));
+  } else if (request.url.includes("/logowanie")) {
+    return NextResponse.next();
   }
 }
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/account",
+  matcher: ["/account", "/logowanie"],
 };

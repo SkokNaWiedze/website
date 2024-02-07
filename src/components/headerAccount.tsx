@@ -4,24 +4,26 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { IoPersonSharp } from "react-icons/io5";
 import { AppContext } from "@/context";
+import { deleteCookie } from "cookies-next";
 
 export default function HeaderAccount() {
   const router = useRouter();
   const { LoggedUser, setLoggedUser } = useContext(AppContext);
 
   const handleLogin = async () => {
-    let data = await fetch("/api/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        login: LoggedUser,
-      }),
-    });
-    const result = await data.json();
-    setLoggedUser("");
-    router.reload()
+    if (LoggedUser === "") {
+      router.push({ pathname: "/logowanie" });
+    } else {
+      let data = await fetch("/api/logout");
+      const results = await data;
+
+      if (results.status === 200) {
+        await deleteCookie("_bagagwa", {
+          path: "/",
+        });
+        router.reload();
+      }
+    }
   };
 
   return (

@@ -2,17 +2,29 @@ import React, { useState, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaRegCheckCircle } from "react-icons/fa";
+import { getCookie } from "cookies-next";
 
 export default function Login() {
+  const router = useRouter();
   const [login, setLogin] = useState("");
   const [pass, setPass] = useState();
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isPassCorrect, setIsPassCorrect] = useState(false);
   const [logged, setLogged] = useState(false);
 
-  const badLoginData: any = useRef();
+  const ExistingCookie = getCookie("_bagagwa");
+  console.log(ExistingCookie);
 
-  const router = useRouter();
+  const checkLoogedUserOnLoad = async () => {
+    console.log("dsa")
+    const ExistingCookie = await getCookie("_bagagwa");
+    console.log(ExistingCookie);
+    if (ExistingCookie !== undefined) {
+      router.push({ pathname: "/account" });
+    }
+  };
+
+  const badLoginData: any = useRef();
 
   const handleLoginData = (e: any) => {
     let value = e.target.value;
@@ -68,7 +80,10 @@ export default function Login() {
   };
 
   return (
-    <div className="bg-[#7856B8]/[0.4] flex items-center justify-center w-screen h-screen">
+    <div
+      onLoad={checkLoogedUserOnLoad}
+      className="bg-[#7856B8]/[0.4] flex items-center justify-center w-screen h-screen"
+    >
       <form
         className="border shadow-xl rounded-[10px] w-[400px] h-[500px] flex flex-col bg-white"
         onSubmit={checkDataToMongoDB}
