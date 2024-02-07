@@ -17,6 +17,8 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       const DateInMilisecs = await NewDate.getTime();
       const AccountType = await UsersData[0].type;
 
+      //CHECK IF ANOTHER USER'S Cookie exists, delete it and  session in MongoDB.
+
       await res.setHeader(
         "Set-Cookie",
         cookie.serialize("_bagagwa", String(`${req.body.login}_${SessionID}`), {

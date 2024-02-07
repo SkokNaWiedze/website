@@ -8,7 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [LoggedUser, setLoggedUser] = useState("");
 
   const getLoggingData = async () => {
-    //check if cookie exists
+    //check if cookie existsgetCookie
     let Cookie = await fetch("/api/getCookie", {
       method: "GET",
       headers: {

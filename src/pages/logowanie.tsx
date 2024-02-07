@@ -47,7 +47,6 @@ export default function Login() {
     console.log(ReturnedData);
 
     if (status === 200) {
-
       setTimeout(() => {
         setIsPassCorrect(true);
         redirectToAdminPage();
@@ -136,12 +135,12 @@ export default function Login() {
         )}
 
         <div className="w-[70%] mx-auto text-center mt-[5px]">
-          <p>
+          {/* <p>
             Nie masz konta?&nbsp;
             <Link href="/rejestracja" className="text-green-700 font-bold">
               Zarejestruj się
             </Link>
-          </p>
+          </p> */}
         </div>
       </form>
     </div>

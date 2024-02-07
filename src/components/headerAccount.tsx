@@ -10,7 +10,15 @@ export default function HeaderAccount() {
   const { LoggedUser, setLoggedUser } = useContext(AppContext);
 
   const handleLogin = async () => {
-    let data = await fetch("/api/logout");
+    let data = await fetch("/api/logout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        login: LoggedUser,
+      }),
+    });
     const result = await data.json();
     setLoggedUser("");
     router.replace({ pathname: "/" });
