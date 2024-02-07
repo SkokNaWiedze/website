@@ -63,7 +63,7 @@ export default function NumbersStarter({
   };
 
   const findNumbers = async () => {
-    setHowManyNumbers(4);
+    setHowManyNumbers(5);
     setAdvanceSearch(false);
     setLevelChoosed(1);
     let i = 1;

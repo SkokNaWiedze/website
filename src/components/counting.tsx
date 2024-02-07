@@ -67,7 +67,7 @@ export default function Counting({
   const music: any = useRef();
 
   const handleClosingAnswer = () => {
-    // setIsExploding(false);
+    setIsExploding(false);
     setTrigger(false);
     setFinish(false);
     setLevelChoosed(0);
@@ -81,7 +81,7 @@ export default function Counting({
     setIsExploding(false);
     setActiveSetNumber(activeSetNumber + 1);
     setNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1]);
-    setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length + 1);
+    setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length);
     // setTrigger(false);
     // setLevelChoosed(0);
     // setNumbers([]);
@@ -206,29 +206,29 @@ export default function Counting({
       >
         <form
           onSubmit={handleAnswer}
-          className="flex flex-col justify-evenly items-center w-full h-full"
+          className="flex flex-col justify-evenly items-center w-full min-h-[90%]"
         >
           <p className="text-[24px] text-white mb-[10px]">Twoja odpowiedź:</p>
           <input
             required
-            className="border-2 w-[300px] text-center"
+            className=" w-[300px] text-center mb-[40px] rounded-[15px]"
             value={answer}
             type="number"
             onChange={hadleInputData}
           ></input>
-          <button className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px]">
+          <button className="text-[30px] bg-[#7856B8] text-white px-[0px] rounded-[15px] w-[300px] mb-[5px]">
             Sprawdź wynik
           </button>
           {activeSetNumber < setsOfNumbersLength - 1 && (
             <div
-              className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px] cursor-pointer"
+              className="text-[30px] bg-[#7856B8] text-white px-[0px] rounded-[15px] w-[300px] cursor-pointer mb-[5px]"
               onClick={handleNextTask}
             >
               Następny zestaw
             </div>
           )}
           <div
-            className="text-[30px] bg-[#7856B8] text-white px-[50px] rounded-[5px] w-[400px] cursor-pointer"
+            className="text-[30px] bg-red-500 text-white px-[50px] rounded-[15px] w-[300px] cursor-pointer"
             onClick={handleClosingAnswer}
           >
             Zamknij

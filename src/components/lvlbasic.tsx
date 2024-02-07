@@ -63,7 +63,7 @@ export default function NumbersBasic({
   };
 
   const findNumbers = async () => {
-    setHowManyNumbers(9);
+    setHowManyNumbers(10);
     setLevelChoosed(2);
     let i = 1;
     let NumsArray: any = [];

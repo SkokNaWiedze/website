@@ -79,9 +79,9 @@ export default function Home() {
     }, 2000);
   };
 
-  useEffect(() => {
-    console.log("fired");
+  console.log(howManyNumbers);
 
+  useEffect(() => {
     const get = async () => {
       if (activeSetNumber === 0) {
         let data = await fetch("/api/checkDataFromTeacher", {
@@ -121,6 +121,8 @@ export default function Home() {
 
     get();
   }, [activeSet, activeSetNumber]);
+
+  console.log(numbers);
 
   return (
     <div className="relative w-screen h-[85vh]">
