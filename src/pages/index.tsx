@@ -124,7 +124,7 @@ export default function Home() {
   console.log(numbers);
 
   return (
-    <div className="relative w-screen h-[85vh]">
+    <div className="relative w-screen h-screen bg-[url('/background.jpeg')] bg-cover bg-center">
       <div className="w-[70%] mx-auto">
         <HeaderRandom />
       </div>
