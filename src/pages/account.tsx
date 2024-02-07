@@ -524,7 +524,7 @@ export default function Account() {
   }, [inputData, newTable, LoggedUser]);
 
   return (
-    <div>
+    <div className="bg-[url('/background.jpeg')] bg-down bg-cover bg-fixed">
       {isDataLoaded === false && (
         <div
           ref={loader}
@@ -569,18 +569,18 @@ export default function Account() {
           setIsDataLoaded={setIsDataLoaded}
         />
       </div>
-      <div className="fixed w-screen bg-white shadow-md z-20">
+      <div className="fixed w-screen bg-white shadow-md z-20 ">
         <HeaderAccount />
       </div>
       <p className="mb-[20px] pt-[100px] font-bold text-[20px] m-auto w-[1050px]">
-        Sekcja dodawania liczb do bazy:
+        <p className="text-white font-semibold">Sekcja dodawania liczb do bazy:</p>
       </p>
       <div className="w-[1050px] mx-auto min-h-[100px] my-[10px] rounded-[10px] flex">
         <div
-          className="p-[10px] shadow-xl rounded-[10px] mx-[10px] w-[600px]"
+          className="p-[10px] shadow-xl rounded-[10px] mr-[10px] w-[600px] bg-white"
           // onSubmit={sendNumbers}
         >
-          <div className="flex pl-[25px] mb-[40px]">
+          <div className="flex pl-[25px] mb-[40px] ">
             <div className="flex items-center flex-col border-r-2 px-[20px]">
               <p className="leading-2">Ile serii?</p>
               <div className="flex items-center">
@@ -702,12 +702,12 @@ export default function Account() {
             </div>
           </form>
         </div>
-        <div className="flex flex-col pt-[10px] shadow-xl rounded-[10px] w-[500px] text-[20px] font-semibold pl-[10px] mb-[0px]">
+        <div className="flex flex-col pt-[10px] shadow-xl rounded-[10px] w-[500px] text-[20px] font-semibold pl-[10px] mb-[0px] bg-white">
           <p>Serie, które zostaną dodane: </p>
           <div>{FormatedSeries}</div>
         </div>
       </div>
-      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px] rounded-[10px] shadow-xl">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px] rounded-[10px] shadow-xl bg-white">
         <div className="p-[10px]">
           <div className="flex w-full justify-between">
             <div>
@@ -717,7 +717,7 @@ export default function Account() {
           </div>
         </div>
       </div>
-      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl bg-white">
         <div className="p-[10px]">
           <div className="flex w-full justify-between">
             <div>
@@ -743,7 +743,7 @@ export default function Account() {
           </div> */}
         </div>
       </div>
-      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl">
+      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl bg-white">
         <div className="p-[10px]">
           <p className="mb-[20px] font-bold text-[20px]">
             Zestawy udostepnione dla Ciebie: (wkrótce)
@@ -781,7 +781,7 @@ export default function Account() {
           </div> */}
         </div>
       </div>
-      <div
+      {/* <div
         id="numbers-from-data-base"
         className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl p-[10px]"
       >
@@ -826,7 +826,7 @@ export default function Account() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

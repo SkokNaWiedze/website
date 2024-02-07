@@ -82,7 +82,7 @@ export default function Login() {
   return (
     <div
       onLoad={checkLoogedUserOnLoad}
-      className=" bg-[url('/background.jpeg')] bg-cover bg-center flex items-center justify-center w-screen h-screen"
+      className="bg-[url('/background.jpeg')] bg-cover bg-center flex items-center justify-center w-screen h-screen"
     >
       <form
         className="shadow-[25px_35px_30px_0px_rgba(0,0,0,0.3)] rounded-[10px] w-[400px] h-[500px] flex flex-col bg-white"
