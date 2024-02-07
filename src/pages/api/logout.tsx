@@ -15,6 +15,7 @@ export async function Logout(req: NextApiRequest, res: NextApiResponse) {
   await deleteCookie("_bagagwa", {
     res,
     req,
+    domain:"skoknawiedze-beta.vercel.app",
     path: "/",
     // maxAge: 60 * 60 * 24 * 7,
   }); // 1 week, 604800000 ms,
