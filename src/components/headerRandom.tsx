@@ -23,10 +23,8 @@ export default function HeaderRandom() {
 
       if (results.status === 200) {
         await deleteCookie("_bagagwa", {
-          // domain: "skoknawiedze-beta.vercel.app",
           path: "/",
-          // maxAge: 60 * 60 * 24 * 7,
-        }); // 1 week, 604800000 ms,
+        });
         router.reload();
       }
     }
