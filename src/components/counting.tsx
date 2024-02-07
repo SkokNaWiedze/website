@@ -80,7 +80,7 @@ export default function Counting({
     setIsExploding(false);
     setActiveSetNumber(activeSetNumber + 1);
     setNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1]);
-    setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length);
+    setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length + 1);
     // setTrigger(false);
     // setLevelChoosed(0);
     // setNumbers([]);
