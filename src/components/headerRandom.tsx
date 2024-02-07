@@ -37,7 +37,7 @@ export default function HeaderRandom() {
   };
 
   return (
-    <div className="w-[80%] h-[15vh] mx-auto flex justify-end">
+    <div className="w-[800px] h-[100px] mx-auto flex justify-end">
       <div className="flex justify-center items-center">
         {/* <Link href="#" className="mr-[10px]">
           Przejdź do aplikacji

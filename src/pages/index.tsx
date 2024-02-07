@@ -125,7 +125,7 @@ export default function Home() {
 
   return (
     <div className="relative w-screen h-screen bg-[url('/background.jpeg')] bg-cover bg-center">
-      <div className="w-[70%] mx-auto">
+      <div className="w-full mx-auto">
         <HeaderRandom />
       </div>
       <Counting
