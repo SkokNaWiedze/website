@@ -82,13 +82,13 @@ export default function Login() {
   return (
     <div
       onLoad={checkLoogedUserOnLoad}
-      className="bg-[#7856B8]/[0.4] flex items-center justify-center w-screen h-screen"
+      className=" bg-[url('/background.jpeg')] bg-cover bg-center flex items-center justify-center w-screen h-screen"
     >
       <form
-        className="border shadow-xl rounded-[10px] w-[400px] h-[500px] flex flex-col bg-white"
+        className="shadow-[25px_35px_30px_0px_rgba(0,0,0,0.3)] rounded-[10px] w-[400px] h-[500px] flex flex-col bg-white"
         onSubmit={checkDataToMongoDB}
       >
-        <div className="h-[150px] flex items-center justify-center text-[28px] font-bold relative">
+        <div className="h-[150px] flex items-center justify-center text-[28px] font-semibold relative">
           <p>Logowanie</p>
           <div
             ref={badLoginData}
@@ -98,11 +98,11 @@ export default function Login() {
           </div>
         </div>
         <div className="flex flex-col w-[70%] mx-auto">
-          <label className="font-semibold">Login lub adres e-mail:</label>
+          <label className="font-semibold">Login:</label>
           <input
             required
             value={login}
-            className="border-2 border-gray-400 h-[50px] rounded-[7px] pl-[5px]"
+            className="border border-gray-400 h-[50px] rounded-[7px] pl-[5px]"
             onChange={handleLoginData}
           ></input>
         </div>
@@ -111,7 +111,7 @@ export default function Login() {
           <input
             required
             value={pass}
-            className=" border-2 border-gray-400 h-[50px] rounded-[7px] pl-[5px]"
+            className=" border border-gray-400 h-[50px] rounded-[7px] pl-[5px]"
             onChange={handlePassData}
           ></input>
         </div>
@@ -149,7 +149,7 @@ export default function Login() {
           </div>
         )}
 
-        <div className="w-[70%] mx-auto text-center mt-[5px]">
+        <div className="w-[70%] mx-auto text-center mt-[35px]">
           <Link href="/" className="text-green-700 font-bold">
             Przejdź do aplikacji
           </Link>
