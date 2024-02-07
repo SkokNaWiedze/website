@@ -124,7 +124,7 @@ export default function Levels({
       <div className="h-auto w-[700px] mx-auto relative ">
         <div className="flex">
           <div className="w-1/2">
-            <p className="text-[26px] text-center">Wybierz poziom trudności:</p>
+            <p className="text-[18px] text-right  pr-[30px]">Wybierz poziom trudności:</p>
             <NumbersStarter
               advanceSearch={advanceSearch}
               setAdvanceSearch={setAdvanceSearch}
