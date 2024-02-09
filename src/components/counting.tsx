@@ -64,6 +64,7 @@ export default function Counting({
   // const result: any = useRef();
 
   const music: any = useRef();
+  const musicBad: any = useRef();
 
   const handleClosingAnswer = () => {
     setIsExploding(false);
@@ -104,6 +105,8 @@ export default function Counting({
     if (parseInt(answer) === suma) {
       setIsExploding(true);
       music.current.play();
+    } else {
+      musicBad.current.play();
     }
   };
 
@@ -174,6 +177,7 @@ export default function Counting({
         }
       >
         <audio ref={music} src="/victory.mp3"></audio>
+        <audio ref={musicBad} src="/bad_answer.mp3"></audio>
         {isExploding === true && <ConfettiExplosion {...largeProps} />}
         <div
           className="absolute left-0 top-0 w-[20px] h-[25px] text-[20px]"
