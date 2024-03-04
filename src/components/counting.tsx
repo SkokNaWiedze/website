@@ -68,6 +68,7 @@ export default function Counting({
 
   const handleClosingAnswer = () => {
     setIsExploding(false);
+    setAnswer("");
     setTrigger(false);
     setFinish(false);
     setLevelChoosed(0);
@@ -77,16 +78,20 @@ export default function Counting({
   };
 
   const handleNextTask = () => {
-    setFinish(false);
-    setIsExploding(false);
-    setActiveSetNumber(activeSetNumber + 1);
-    setNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1]);
-    setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length + 1);
-    // setTrigger(false);
-    // setLevelChoosed(0);
-    // setNumbers([]);
-    counter.current.innerHTML = "";
-    result.current.style.display = "none";
+    if (levelChoosed === 4) {
+      setFinish(false);
+      setIsExploding(false);
+      setAnswer("");
+      setActiveSetNumber(activeSetNumber + 1);
+      setNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1]);
+      setHowManyNumbers(setsOfNumbers[0].numbers[activeSetNumber + 1].length + 1);
+      // setTrigger(false);
+      // setLevelChoosed(0);
+      // setNumbers([]);
+      counter.current.innerHTML = "";
+      result.current.style.display = "none";
+    } else {
+    }
   };
 
   const [isExploding, setIsExploding] = useState(false);
@@ -153,9 +158,6 @@ export default function Counting({
   //     }, 2000);
   //   }
   // };
-
-  console.log(activeSetNumber);
-  console.log(setsOfNumbersLength);
 
   const largeProps: ConfettiProps = {
     force: 0.8,
