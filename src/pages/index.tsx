@@ -78,9 +78,10 @@ export default function Home() {
     }, 2000);
   };
 
-  console.log(howManyNumbers);
+  // console.log(howManyNumbers);
 
   useEffect(() => {
+    console.log("fired!");
     const get = async () => {
       if (activeSetNumber === 0) {
         let data = await fetch("/api/checkDataFromTeacher", {

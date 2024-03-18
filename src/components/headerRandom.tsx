@@ -49,11 +49,11 @@ export default function HeaderRandom() {
           <div className="flex items-center justify-center px-[17px] py-[5px] rounded-[10px] cursor-pointer">
             <Link
               href="/account"
-              className="mx-[10px] px-[10px] bg-green-500/[0.2] h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
+              className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
             >
               Panel nauczyciela
             </Link>
-            <div className="flex bg-green-500/[0.2] py-[5px] rounded-[10px] px-[10px]">
+            <div className="flex bg-green-200 py-[5px] rounded-[10px] px-[10px]">
               <IoPersonSharp className="w-[30px] h-[30px]" />
               <div className="flex flex-col items-left justify-center ml-[10px]">
                 <p className="text-[20px] leading-[20px] ">Cześć {LoggedUser} :)</p>
@@ -66,8 +66,8 @@ export default function HeaderRandom() {
           onClick={handleLogin}
           className={
             LoggedUser !== ""
-              ? "flex items-center justify-center bg-red-500/[0.8] w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
-              : "flex items-center justify-center bg-green-500/[0.8] w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
+              ? "flex items-center justify-center bg-red-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
+              : "flex items-center justify-center bg-green-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
           }
         >
           {LoggedUser !== "" && <p>Wyloguj</p>}

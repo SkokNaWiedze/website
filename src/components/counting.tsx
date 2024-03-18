@@ -63,14 +63,23 @@ export default function Counting({
   // const counter: any = useRef();
   // const result: any = useRef();
 
+  const [isExploding, setIsExploding] = useState(false);
+  const [answer, setAnswer] = useState<any | null>(null);
+
   const music: any = useRef();
   const musicBad: any = useRef();
 
+  console.log(finish);
+  console.log(answer);
+  console.log(activeSetNumber);
+
   const handleClosingAnswer = () => {
+    setFinish(false);
+    setActiveSet("");
     setIsExploding(false);
     setAnswer("");
+    setActualNumber(0);
     setTrigger(false);
-    setFinish(false);
     setLevelChoosed(0);
     setNumbers([]);
     counter.current.innerHTML = "";
@@ -93,9 +102,6 @@ export default function Counting({
     } else {
     }
   };
-
-  const [isExploding, setIsExploding] = useState(false);
-  const [answer, setAnswer] = useState<any | null>(null);
 
   const handleAnswer = (e: any) => {
     e.preventDefault();
