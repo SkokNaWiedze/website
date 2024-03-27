@@ -10,7 +10,6 @@ export default function Login() {
   const [pass, setPass] = useState();
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isPassCorrect, setIsPassCorrect] = useState(false);
-  const [logged, setLogged] = useState(false);
 
   const ExistingCookie = getCookie("_bagagwa");
   console.log(ExistingCookie);
@@ -46,7 +45,7 @@ export default function Login() {
       pass: pass,
     });
 
-    let Registration = await fetch("/api/loginIn", {
+    let Logining = await fetch("/api/loginIn", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,8 +53,9 @@ export default function Login() {
       body: data,
     });
 
-    const ReturnedData = await Registration.json();
-    const status = await Registration.status;
+    const ReturnedData = await Logining.json();
+    const status = await Logining.status;
+    const accountType = Logining.type;
     console.log(ReturnedData);
 
     if (status === 200) {
@@ -75,7 +75,7 @@ export default function Login() {
 
   const redirectToAdminPage = () => {
     setTimeout(() => {
-      router.push({ pathname: "/account" });
+      router.push({ pathname: "/" });
     }, 500);
   };
 

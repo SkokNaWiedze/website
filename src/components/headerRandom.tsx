@@ -11,17 +11,16 @@ import { deleteCookie } from "cookies-next";
 export default function HeaderRandom() {
   const router = useRouter();
 
-  const { LoggedUser, setLoggedUser } = useContext(AppContext);
+  const { LoggedUser, setLoggedUser, userType, setUserType } = useContext(AppContext);
   console.log(LoggedUser);
 
   const login: any = useRef();
   const loginLoader: any = useRef();
 
   const handleLogin = async () => {
-    login.current.style.display = "none";
-    loginLoader.current.style.display = "flex";
-
-    if (LoggedUser === "") {
+    if (LoggedUser === undefined) {
+      login.current.style.display = "none";
+      loginLoader.current.style.display = "flex";
       router.push({ pathname: "/logowanie" });
     } else {
       let data = await fetch("/api/logout");
@@ -45,19 +44,21 @@ export default function HeaderRandom() {
         {/* <Link href="#" className="ml-[10px]">
             Strona głowna
           </Link> */}
-        {LoggedUser !== "" && (
+        {LoggedUser !== undefined && (
           <div className="flex items-center justify-center px-[17px] py-[5px] rounded-[10px] cursor-pointer">
-            <Link
-              href="/account"
-              className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
-            >
-              Panel nauczyciela
-            </Link>
+            {userType === "Admin" && (
+              <Link
+                href="/account"
+                className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
+              >
+                Panel nauczyciela
+              </Link>
+            )}
             <div className="flex bg-green-200 py-[5px] rounded-[10px] px-[10px]">
               <IoPersonSharp className="w-[30px] h-[30px]" />
               <div className="flex flex-col items-left justify-center ml-[10px]">
                 <p className="text-[20px] leading-[20px] ">Cześć {LoggedUser} :)</p>
-                <p className="text-[12px] leading-[12px]">konto: nauczyciel</p>
+                <p className="text-[12px] leading-[12px]">konto: {userType}</p>
               </div>
             </div>
           </div>
@@ -65,13 +66,13 @@ export default function HeaderRandom() {
         <div
           onClick={handleLogin}
           className={
-            LoggedUser !== ""
+            LoggedUser !== undefined
               ? "flex items-center justify-center bg-red-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
               : "flex items-center justify-center bg-green-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
           }
         >
-          {LoggedUser !== "" && <p>Wyloguj</p>}
-          {LoggedUser === "" && <p ref={login}>Zaloguj</p>}
+          {LoggedUser !== undefined && <p>Wyloguj</p>}
+          {LoggedUser === undefined && <p ref={login}>Zaloguj</p>}
           <div role="status" ref={loginLoader} className="hidden">
             <svg
               aria-hidden="true"

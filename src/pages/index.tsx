@@ -2,7 +2,7 @@ import Image from "next/image";
 import HeaderRandom from "@/components/headerRandom";
 import Numbers from "@/components/numbers";
 import Time from "@/components/time";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { Inter } from "next/font/google";
 import Complexity from "@/components/complexity";
 import Start from "@/components/start";
@@ -10,10 +10,14 @@ import Levels from "@/components/levels";
 import NumbersStarter from "../components/lvlstarter";
 import Advancesearch from "@/components/advancesearch";
 import Counting from "@/components/counting";
+import { AppContext } from "@/context";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { LoggedUser, setLoggedUser, userType, setUserType } = useContext(AppContext);
+  console.log(LoggedUser);
+
   const [state, setState]: any = useState();
   const [howManyNumbers, setHowManyNumbers]: any = useState(0);
   const [complexity, setComplexity] = useState(6);
@@ -78,49 +82,49 @@ export default function Home() {
     }, 2000);
   };
 
-  // console.log(howManyNumbers);
-
   useEffect(() => {
     console.log("fired!");
     const get = async () => {
-      if (activeSetNumber === 0) {
-        let data = await fetch("/api/checkDataFromTeacher", {
-          method: "GET",
-        });
+      console.log("user" + LoggedUser);
+      if (LoggedUser !== undefined) {
+        if (activeSetNumber === 0) {
+          let data = await fetch("/api/checkDataFromTeacher", {
+            method: "GET",
+          });
 
-        console.log(activeSetNumber);
-        const result = await data.json();
-        console.log(result);
-        console.log(activeSet);
+          console.log(activeSetNumber);
+          const result = await data.json();
+          console.log(result);
+          console.log(activeSet);
 
-        const filterNumbers = await result.msg.filter((set: any) => set.table_name === activeSet);
-        console.log(filterNumbers);
+          const filterNumbers = await result.msg.filter((set: any) => set.table_name === activeSet);
+          console.log(filterNumbers);
 
-        if (filterNumbers.length > 0) {
-          // console.log(filterNumbers[0].numbers.length);
-          // console.log(filterNumbers[0].numbers[activeSetNumber]);
+          if (filterNumbers.length > 0) {
+            // console.log(filterNumbers[0].numbers.length);
+            // console.log(filterNumbers[0].numbers[activeSetNumber]);
 
-          setNumbers(filterNumbers[0].numbers[activeSetNumber]);
-          //full sets with names, owener
-          setSetsOfNumbers(filterNumbers);
-          //length of specific sets
-          setHowManyNumbers(filterNumbers[0].numbers[0].length + 1);
-          //length of all numbers in array
-          setSetsOfNumbersLength(filterNumbers[0].numbers.length);
+            setNumbers(filterNumbers[0].numbers[activeSetNumber]);
+            //full sets with names, owener
+            setSetsOfNumbers(filterNumbers);
+            //length of specific sets
+            setHowManyNumbers(filterNumbers[0].numbers[0].length + 1);
+            //length of all numbers in array
+            setSetsOfNumbersLength(filterNumbers[0].numbers.length);
+          }
+          if (data.status === 200) {
+            setSetsFromTeacher(result.msg);
+          } else {
+            // setSetsFromTeacher(SetsFromTeacherResults.msg);
+          }
         }
-        if (data.status === 200) {
-          setSetsFromTeacher(result.msg);
-        } else {
-          // setSetsFromTeacher(SetsFromTeacherResults.msg);
+        if (activeSetNumber !== 0) {
+          startCounting();
         }
-      }
-      if (activeSetNumber !== 0) {
-        startCounting();
       }
     };
-
     get();
-  }, [activeSet, activeSetNumber]);
+  }, [activeSet, activeSetNumber, LoggedUser]);
 
   console.log(numbers);
 
@@ -192,3 +196,55 @@ export default function Home() {
     </div>
   );
 }
+
+// export const getStaticProps = async () => {
+//   //check if cookie existsgetCookie
+//   let Cookie = await fetch("http://localhost:3000/api/getCookie", {
+//     method: "GET",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   });
+//   let results;
+
+//   let JsonCookie = await Cookie.json();
+
+//   let Splited;
+//   let name;
+//   let session;
+
+//   console.log("cookie" + JSON.stringify(JsonCookie));
+
+//   // split values if cookie exists
+//   if (JsonCookie.name?.length > 0) {
+//     Splited = await JsonCookie.name.split("_");
+//     name = await Splited[0];
+//     session = await Splited[1];
+
+//     let Registration = await fetch("http://localhost:3000/api/checkIfSessionExists", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         login: name,
+//         session: session,
+//       }),
+//     });
+
+//     const status = await Registration.status;
+//     console.log("lalalallaaaaaa" + status);
+
+//     if (status === 200) {
+//       results = name;
+//     } else {
+//       results = "ther is no active session";
+//     }
+//   } else {
+//     console.log("No coockie")
+//   }
+
+//   return {
+//     props: { loggedUser: "lala" },
+//   };
+// };

@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { connectMongoDB } from "../../../libs/mongodb";
 import Users from "../../../models/user";
 import Session from "../../../models/sessions";
-import cookie from "cookie";
+// import cookie from "cookie";
 import { setCookie } from "cookies-next";
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
@@ -28,31 +28,20 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
         maxAge: 60 * 60 * 24 * 7,
       }); // 1 week, 604800000 ms,
 
-      // await res.setHeader(
-      //   "Set-Cookie",
-      //   cookie.serialize("_bagagwa", String(`${req.body.login}_${SessionID}`), {
-      //     // httpOnly: true,
-      //     maxAge: 60 * 60 * 24 * 7, // 1 week, 604800000 ms,
-      //     path: "/",
-      //   }),
-      // );
-
-      console.log("cookie seted!");
-
-      //setting a sessions
-
       const UsersSession = await Session.find({ login: req.body.login });
       if (UsersSession.length === 1) {
         await Session.findOneAndUpdate({
           login: UsersSession[0].login,
           session: SessionID,
           date: SessionID,
+          type: AccountType,
         });
       } else {
         await Session.create({
           login: req.body.login,
           session: SessionID,
           date: SessionID,
+          type: AccountType,
         });
       }
 

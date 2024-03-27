@@ -8,11 +8,13 @@ import Image from "next/image";
 
 import Select from "react-select";
 import AddNewSet from "@/components/addNewSet";
+import AddNewUser from "@/components/user/addNewUser";
 
 export default function Account() {
   const newSets: any = useRef();
   const infoAboutSets: any = useRef();
   const loader: any = useRef();
+  const newAccount: any = useRef();
 
   const [rows, setRows] = useState(3);
   const [cols, setCols] = useState(3);
@@ -274,7 +276,6 @@ export default function Account() {
     const result = await data.json();
     console.log(result);
 
-    // console.log(await data.json());
     setNewTable(table_name);
     getSetsAndNamesFromDB();
     setSelectedOptionSets(null);
@@ -525,6 +526,7 @@ export default function Account() {
 
   return (
     <div className="bg-[url('/background.jpeg')] bg-down bg-cover bg-fixed">
+      <AddNewUser newAccount={newAccount} />
       {isDataLoaded === false && (
         <div
           ref={loader}
@@ -569,8 +571,8 @@ export default function Account() {
           setIsDataLoaded={setIsDataLoaded}
         />
       </div>
-      <div className="fixed w-screen bg-white shadow-md z-20 ">
-        <HeaderAccount />
+      <div className="fixed w-screen bg-white shadow-md z-20">
+        <HeaderAccount newAccount={newAccount} />
       </div>
       <p className="mb-[20px] pt-[100px] font-bold text-[20px] m-auto w-[1050px]">
         <p className="text-white font-semibold">Sekcja dodawania liczb do bazy:</p>
@@ -596,7 +598,7 @@ export default function Account() {
                   onClick={handleDecrisingRows}
                 >
                   -
-                </div>{" "}
+                </div>
               </div>
             </div>
             <div className="flex items-center flex-col mx-[10px]">

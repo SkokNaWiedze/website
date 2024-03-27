@@ -5,7 +5,8 @@ import { AppContext } from "@/context";
 import { getStaticProps } from "next/dist/build/templates/pages";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [LoggedUser, setLoggedUser] = useState("");
+  const [LoggedUser, setLoggedUser] = useState<any>();
+  const [userType, setUserType] = useState<any>();
 
   const getLoggingData = async () => {
     //check if cookie existsgetCookie
@@ -23,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       const name = await Splited[0];
       const session = await Splited[1];
 
-      let Registration = await fetch("/api/getDataMiddleware", {
+      let Registration = await fetch("/api/checkIfSessionExists", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,23 +35,28 @@ export default function App({ Component, pageProps }: AppProps) {
         }),
       });
 
+      const ReturnedData = await Registration.json();
       const status = await Registration.status;
+      const accountType = await ReturnedData.result;
+      console.log(accountType);
 
       if (status === 200) {
         setLoggedUser(name);
+        setUserType(accountType);
       } else {
-        setLoggedUser("");
+        setLoggedUser(undefined);
+        setUserType(undefined);
       }
     }
   };
 
-  if (LoggedUser === "") {
+  useEffect(() => {
     getLoggingData();
-  }
+  });
 
   return (
-    <AppContext.Provider value={{ LoggedUser, setLoggedUser }}>
-      <Component onLoad={getLoggingData} {...pageProps} />
+    <AppContext.Provider value={{ LoggedUser, setLoggedUser, userType, setUserType }}>
+      <Component {...pageProps} />
     </AppContext.Provider>
   );
 }

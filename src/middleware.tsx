@@ -14,9 +14,8 @@ export async function middleware(request: NextRequest) {
   const NameFromCookieSpliting = cookie?.value.split("_");
   const NameFromCookie = await NameFromCookieSpliting?.[0];
   const SessionFromCookie = await NameFromCookieSpliting?.[1];
-  console.log("acc");
 
-  let Registration = await fetch("https://skoknawiedze-beta.vercel.app/api/getDataMiddleware", {
+  let Registration = await fetch("http://localhost:3000/api/checkIfSessionExists", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -27,15 +26,17 @@ export async function middleware(request: NextRequest) {
     }),
   });
 
+  console.log(await Registration.status);
+
   const ReturnedStatus = await Registration.status;
-  // console.log(ReturnedStatus);
+  console.log("returned status" + ReturnedStatus);
 
   if (ReturnedStatus === 200) {
     if (request.url.includes("/account")) {
       console.log("1");
       return NextResponse.next();
     } else if (request.url.includes("/logowanie")) {
-      return NextResponse.redirect(new URL("/account", request.url));
+      return NextResponse.redirect(new URL("/", request.url));
     }
   } else if (request.url.includes("/account")) {
     console.log("1");
