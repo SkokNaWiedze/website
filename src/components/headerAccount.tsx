@@ -12,7 +12,7 @@ type newUser = {
 
 export default function HeaderAccount({ newAccount }: newUser) {
   const router = useRouter();
-  const { LoggedUser, setLoggedUser } = useContext(AppContext);
+  const { LoggedUser, setLoggedUser, userType, setUserType } = useContext(AppContext);
 
   const handleLogin = async () => {
     if (LoggedUser === "") {
@@ -54,12 +54,14 @@ export default function HeaderAccount({ newAccount }: newUser) {
         >
           Przejdź do aplikacji
         </Link>
-        <div
-          onClick={showNewUserPopUp}
-          className="cursor-pointer mr-[10px] bg-green-500/[0.6] h-[42px] flex justify-center items-center px-[10px] rounded-[10px] font-semibold hover:bg-[#7856B8] hover:text-white duration-200"
-        >
-          Utwórz konto
-        </div>
+        {userType === "Admin" && (
+          <div
+            onClick={showNewUserPopUp}
+            className="cursor-pointer mr-[10px] bg-green-500/[0.6] h-[42px] flex justify-center items-center px-[10px] rounded-[10px] font-semibold hover:bg-[#7856B8] hover:text-white duration-200"
+          >
+            Utwórz konto
+          </div>
+        )}
         {LoggedUser !== "" && (
           <>
             <div className="flex items-center justify-center bg-green-500/[0.2] px-[17px] py-[5px] rounded-[10px]">

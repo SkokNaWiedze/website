@@ -46,14 +46,15 @@ export default function HeaderRandom() {
           </Link> */}
         {LoggedUser !== undefined && (
           <div className="flex items-center justify-center px-[17px] py-[5px] rounded-[10px] cursor-pointer">
-            {userType === "Admin" && (
-              <Link
-                href="/account"
-                className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
-              >
-                Panel nauczyciela
-              </Link>
-            )}
+            {userType === "Admin" ||
+              (userType === "Nauczyciel" && (
+                <Link
+                  href="/account"
+                  className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
+                >
+                  Panel nauczyciela
+                </Link>
+              ))}
             <div className="flex bg-green-200 py-[5px] rounded-[10px] px-[10px]">
               <IoPersonSharp className="w-[30px] h-[30px]" />
               <div className="flex flex-col items-left justify-center ml-[10px]">

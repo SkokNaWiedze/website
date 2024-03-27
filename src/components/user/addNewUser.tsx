@@ -208,7 +208,7 @@ export default function AddNewUser({ newAccount }: newUser) {
               className="border border-gray-400 rounded-[5px] text-[18px] pl-[8px] w-full placeholder:text-[14px] placeholder:translate-y-[-2px]"
             >
               <option value="Student">Uczeń</option>
-              <option value="Teacher">Nauczyciel</option>
+              <option value="Nauczyciel">Nauczyciel</option>
               {/* <option value="Admin">Administrator</option> */}
             </select>
           </div>
