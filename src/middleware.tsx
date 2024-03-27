@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
   const NameFromCookie = await NameFromCookieSpliting?.[0];
   const SessionFromCookie = await NameFromCookieSpliting?.[1];
 
-  let Registration = await fetch("http://localhost:3000/api/checkIfSessionExists", {
+  let Registration = await fetch("https://skoknawiedze-beta.vercel.app/api/checkIfSessionExists", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
