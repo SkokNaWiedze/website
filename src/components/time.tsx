@@ -20,16 +20,14 @@ export default function Time({ howMuchTime, setHowMuchTime }: QueryParams) {
 
   return (
     <div className="flex flex-col">
-      <div className="mb-[5px] text-[16px]">
-        Czas wyświetlania liczby (sekundy):
-      </div>
+      <div className="mb-[5px] md:text-[16px]">Czas wyświetlania liczby (sekundy):</div>
       <div className="flex w-[260px] justify-between flex-wrap">
         <div
           ref={halfSecond}
           className={
             howMuchTime === 500
-              ? "py-[2px] bg-[#7856B8] rounded-[5px] shadow-sm cursor-pointer text-[20px] w-[40px] text-center text-white"
-              : "py-[2px] bg-[#49DEE6] rounded-[5px] shadow-sm cursor-pointer text-[20px] w-[40px] text-center"
+              ? "py-[2px] bg-[#7856B8] rounded-[5px] shadow-sm cursor-pointer text-[20px] w-[40px] text-center text-white "
+              : "py-[2px] bg-[#49DEE6] rounded-[5px] shadow-sm cursor-pointer text-[20px] w-[40px] text-center "
           }
           data-value="500"
           onClick={handleTimeValue}

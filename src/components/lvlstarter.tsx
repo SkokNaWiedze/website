@@ -115,8 +115,8 @@ export default function NumbersStarter({
       <div
         className={
           levelChoosed === 1
-            ? "absolute top-0 botom-0 my-auto left-[360px] bg-white duration-200 w-[320px] p-[4px] shadow-xl rounded-[10px] flex items-center border"
-            : "absolute top-0 botom-0 my-auto left-[50px] bg-white duration-200 w-[320px] p-[4px] flex items-center"
+            ? "absolute top-0 botom-0 my-auto md:left-[360px] left-[50px] z-20 lg:z-0 bg-white duration-200 w-[320px] p-[5px] md:shadow-xl shadow-[0px_0px_10px_2px_rgba(0,0,0,0.3)] rounded-[10px] flex items-center"
+            : "absolute top-0 botom-0 my-auto left-[50px] bg-white duration-200 w-[320px] p-[5px] flex items-center"
         }
       >
         <Time howMuchTime={howMuchTime} setHowMuchTime={setHowMuchTime} />
@@ -156,8 +156,8 @@ export default function NumbersStarter({
         data-name="starter"
         className={
           levelChoosed === 1
-            ? "duration-200 text-center text-white text-[40px] px-[10px] py-[6px] bg-[#7856B8] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10"
-            : "duration-200 text-center text-[40px] px-[10px] py-[6px] bg-[#49DEE6] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10"
+            ? "duration-200 text-center text-white text-[40px] px-[10px] py-[6px] bg-[#7856B8] md:w-[320px] w-[270px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10 mx-auto md:mx-0"
+            : "duration-200 text-center md:text-[40px] text-[40px] px-[10px] py-[6px] bg-[#49DEE6] md:w-[320px] w-[270px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-[#7856B8] hover:text-white z-10 mx-auto md:mx-0"
         }
         onClick={findNumbers}
       >

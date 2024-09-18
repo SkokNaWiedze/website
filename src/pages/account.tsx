@@ -1,6 +1,6 @@
 import React, { use, useContext, useEffect, useState, useRef } from "react";
-import { IoIosArrowDropupCircle } from "react-icons/io";
-import { IoIosArrowDropdownCircle } from "react-icons/io";
+// import { IoIosArrowDropupCircle } from "react-icons/io";
+// import { IoIosArrowDropdownCircle } from "react-icons/io";
 import HeaderAccount from "@/components/headerAccount";
 import { AppContext } from "@/context";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -9,6 +9,7 @@ import Image from "next/image";
 import Select from "react-select";
 import AddNewSet from "@/components/addNewSet";
 import AddNewUser from "@/components/user/addNewUser";
+import AddNumbersToGame from "@/components/account/addNumbersToGame";
 
 export default function Account() {
   const newSets: any = useRef();
@@ -19,11 +20,19 @@ export default function Account() {
   const [rows, setRows] = useState(3);
   const [cols, setCols] = useState(3);
 
+  const [rowsGame, setRowsGame] = useState(3);
+  const [colsGame, setColsGame] = useState(3);
+
   const [inputData, setInputData] = useState<any>(
     Array.from({ length: rows }, () => Array.from({ length: cols }, () => null)),
   );
 
+  const [inputDataGame, setInputDataGame] = useState<any>(
+    Array.from({ length: rowsGame }, () => Array.from({ length: colsGame }, () => null)),
+  );
+
   const [clearedInputData, setClearedInputData] = useState<any>();
+  const [clearedInputDataGame, setClearedInputDataGame] = useState<any>();
 
   const [newTable, setNewTable] = useState();
 
@@ -36,6 +45,7 @@ export default function Account() {
   const [yourTables, setYourTables] = useState();
   const [ownersSets, setOwnerSets] = useState();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [gameDataFromDB, setGameDataFromDB] = useState();
 
   const { LoggedUser, setLoggedUser } = useContext(AppContext);
   // console.log(LoggedUser);
@@ -93,10 +103,11 @@ export default function Account() {
     });
 
     const returned = await data.json();
-    // console.log("second");
+    // console.log(returned?.GameData);
     await getActiveSets(returned);
     setSetsForUserFromDataBase(returned);
     await checkActualSetsOfNumbers(returned);
+    await setGameDataFromDB(returned?.GameData);
   };
 
   //data downloaded from MongoDB
@@ -148,7 +159,7 @@ export default function Account() {
     });
 
     e.preventDefault();
-    console.log(numersList);
+    // console.log(numersList);
     let data = await fetch("/api/pushNumbers", {
       method: "POST",
       headers: {
@@ -156,7 +167,7 @@ export default function Account() {
       },
       body: query,
     });
-    console.log(await data.json());
+    // console.log(await data.json());
 
     getDataFromDataBase();
     setNumbersLits([]);
@@ -183,7 +194,7 @@ export default function Account() {
 
   const handleNumbersSets = async (e: any, table_name: any) => {
     // e.preventDefault();
-    console.log(table_name);
+    // console.log(table_name);
     let query = JSON.stringify({
       name: table_name,
       login: LoggedUser,
@@ -197,7 +208,7 @@ export default function Account() {
       body: query,
     });
 
-    console.log(await data.json());
+    // console.log(await data.json());
 
     getDataFromDataBase();
     getSetsAndNamesFromDB();
@@ -274,7 +285,7 @@ export default function Account() {
     });
 
     const result = await data.json();
-    console.log(result);
+    // console.log(result);
 
     setNewTable(table_name);
     getSetsAndNamesFromDB();
@@ -357,7 +368,7 @@ export default function Account() {
 
     const dataJson = await data.json();
     const SharedData = await dataJson.results;
-    console.log(SharedData);
+    // console.log(SharedData);
 
     const SharedResults = SharedData.map((numbers: any) => {
       // <div className="flex">
@@ -371,7 +382,7 @@ export default function Account() {
     // setIsDataLoaded(true);
   };
 
-  //creating input matrix
+  //creating input matrix main db
   const handleIncrisingRows = () => {
     const newArray = [...inputData, Array.from({ length: cols }, () => null)];
     setRows(rows + 1);
@@ -465,7 +476,7 @@ export default function Account() {
 
     const result = await data.json();
     if (result.length === 0) {
-      console.log(result);
+      // console.log(result);
     }
     getSetsAndNamesFromDB();
   };
@@ -481,7 +492,7 @@ export default function Account() {
       shared: [],
       isActive: false,
     });
-    console.log(query);
+    // console.log(query);
 
     let data = await fetch("/api/addSetToTable", {
       method: "POST",
@@ -507,11 +518,11 @@ export default function Account() {
     infoAboutSets.current.style.display = "none";
   };
 
-  console.log(inputData);
+  // console.log(inputData);
 
   useEffect(() => {
     const go = async () => {
-      console.log("use Effect");
+      // console.log("use Effect");
       await getDataFromDataBase();
       console.log("1");
       await getSetsAndNamesFromDB();
@@ -577,6 +588,8 @@ export default function Account() {
       <p className="mb-[20px] pt-[100px] font-bold text-[20px] m-auto w-[1050px]">
         <p className="text-white font-semibold">Sekcja dodawania liczb do bazy:</p>
       </p>
+
+      {/* DODAWANIE LICZB DO BAZY */}
       <div className="w-[1050px] mx-auto min-h-[100px] my-[10px] rounded-[10px] flex">
         <div
           className="p-[10px] shadow-xl rounded-[10px] mr-[10px] w-[600px] bg-white"
@@ -745,6 +758,22 @@ export default function Account() {
           </div> */}
         </div>
       </div>
+
+      {/* SEKCJA GRY */}
+      <AddNumbersToGame
+        rowsGame={rowsGame}
+        setRowsGame={setRowsGame}
+        colsGame={colsGame}
+        setColsGame={setColsGame}
+        inputDataGame={inputDataGame}
+        setInputDataGame={setInputDataGame}
+        clearedInputDataGame={clearedInputDataGame}
+        setClearedInputDataGame={setClearedInputDataGame}
+        addNewSetsToExistingTable={addNewSetsToExistingTable}
+        numersList={numersList}
+        gameDataFromDB={gameDataFromDB}
+      />
+
       <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl bg-white">
         <div className="p-[10px]">
           <p className="mb-[20px] font-bold text-[20px]">

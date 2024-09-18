@@ -120,11 +120,13 @@ export default function Levels({
   };
 
   return (
-    <div className="w-[800px] mx-auto flex justify-center items-center h-[400px] relative bg-white rounded-[20px] shadow-[15px_25px_30px_0px_rgba(0,0,0,0.3)]">
-      <div className="h-auto w-[700px] mx-auto relative ">
+    <div className="md:w-[800px] w-[90vw] mx-auto flex justify-center items-center h-[400px] relative bg-white rounded-[20px] shadow-[15px_25px_30px_0px_rgba(0,0,0,0.3)]">
+      <div className="h-auto w-[700px] mx-auto relative">
         <div className="flex">
-          <div className="w-1/2">
-            <p className="text-[18px] text-right  pr-[30px]">Wybierz poziom trudności:</p>
+          <div className="md:w-1/2">
+            <p className="text-[18px] md:text-right text-left md:pr-[30px] pl-[52px]">
+              Wybierz poziom trudności:
+            </p>
             <NumbersStarter
               advanceSearch={advanceSearch}
               setAdvanceSearch={setAdvanceSearch}
@@ -192,7 +194,7 @@ export default function Levels({
               setActiveSetNumber={setActiveSetNumber}
             />
           </div>
-          <div className="w-1/2 flex justify-center items-center">
+          <div className="w-1/2 hidden md:flex justify-center items-center">
             <Image src="/logo.jpeg" width={480} height={100} alt="logo" />
           </div>
         </div>

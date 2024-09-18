@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useContext, useRef } from "react";
+import React, { useContext, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -7,6 +7,8 @@ import { IoPersonSharp } from "react-icons/io5";
 import path from "path";
 import { AppContext } from "@/context";
 import { deleteCookie } from "cookies-next";
+import { CiMenuBurger } from "react-icons/ci";
+import { CiMenuFries } from "react-icons/ci";
 
 export default function HeaderRandom() {
   const router = useRouter();
@@ -36,8 +38,14 @@ export default function HeaderRandom() {
   };
 
   return (
-    <div className="w-[800px] h-[100px] mx-auto flex justify-end">
-      <div className="flex justify-center items-center">
+    <div className="lg:w-[800px] w-full h-[100px] mx-auto flex justify-end">
+      <div className="w-full md:hidden bg-white h-[80px] flex justify-between items-center px-[15px]">
+        <div id="logo" className="h-full relative w-[80px]">
+          <Image src="/logo.jpeg" fill objectFit="contain" alt="skok-na-wiedze"></Image>
+        </div>
+        <CiMenuBurger className="w-[40px] h-[40px]" />
+      </div>
+      <div className="hidden lg:flex justify-center items-center">
         {/* <Link href="#" className="mr-[10px]">
           Przejdź do aplikacji
         </Link> */}

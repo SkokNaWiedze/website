@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeaderRandom from "@/components/headerRandom";
+import Head from "next/head";
 import Numbers from "@/components/numbers";
 import Time from "@/components/time";
 import { useEffect, useState, useRef, useContext } from "react";
@@ -129,71 +130,77 @@ export default function Home() {
   console.log(numbers);
 
   return (
-    <div className="relative w-screen h-screen bg-[url('/background.jpeg')] bg-cover bg-center">
-      <div className="w-full mx-auto">
-        <HeaderRandom />
+    <>
+      <Head>
+        <title>Skok na Wiedzę</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+      <div className="relative w-screen h-screen bg-[url('/background.jpeg')] bg-cover bg-center">
+        <div className="w-full mx-auto">
+          <HeaderRandom />
+        </div>
+        <Counting
+          startCounting={startCounting}
+          actualNumber={actualNumber}
+          setActualNumber={setActualNumber}
+          trigger={trigger}
+          setTrigger={setTrigger}
+          finish={finish}
+          setFinish={setFinish}
+          howManyNumbers={howManyNumbers}
+          setHowManyNumbers={setHowManyNumbers}
+          levelChoosed={levelChoosed}
+          setLevelChoosed={setLevelChoosed}
+          numbers={numbers}
+          setNumbers={setNumbers}
+          howMuchTime={howMuchTime}
+          setHowMuchTime={setHowMuchTime}
+          sum={sum}
+          setSum={setSum}
+          activeSet={activeSet}
+          setActiveSet={setActiveSet}
+          setsOfNumbers={setsOfNumbers}
+          setSetsOfNumbers={setSetsOfNumbers}
+          activeSetNumber={activeSetNumber}
+          setActiveSetNumber={setActiveSetNumber}
+          counter={counter}
+          result={result}
+          setsOfNumbersLength={setsOfNumbersLength}
+          setSetsOfNumbersLength={setSetsOfNumbersLength}
+        />
+        <Levels
+          startCounting={startCounting}
+          actualNumber={actualNumber}
+          setActualNumber={setActualNumber}
+          advanceSearch={advanceSearch}
+          setAdvanceSearch={setAdvanceSearch}
+          trigger={trigger}
+          setTrigger={setTrigger}
+          howMuchTime={howMuchTime}
+          setHowMuchTime={setHowMuchTime}
+          howManyNumbers={howManyNumbers}
+          setHowManyNumbers={setHowManyNumbers}
+          numbers={numbers}
+          setNumbers={setNumbers}
+          sum={sum}
+          setSum={setSum}
+          finish={finish}
+          setFinish={setFinish}
+          levelChoosed={levelChoosed}
+          setLevelChoosed={setLevelChoosed}
+          activeSet={activeSet}
+          setActiveSet={setActiveSet}
+          setsOfNumbers={setsOfNumbers}
+          setSetsOfNumbers={setSetsOfNumbers}
+          setsFromTeacher={setsFromTeacher}
+          setSetsFromTeacher={setSetsFromTeacher}
+          setsOfNumbersLength={setsOfNumbersLength}
+          setSetsOfNumbersLength={setSetsOfNumbersLength}
+          activeSetNumber={activeSetNumber}
+          setActiveSetNumber={setActiveSetNumber}
+        />
       </div>
-      <Counting
-        startCounting={startCounting}
-        actualNumber={actualNumber}
-        setActualNumber={setActualNumber}
-        trigger={trigger}
-        setTrigger={setTrigger}
-        finish={finish}
-        setFinish={setFinish}
-        howManyNumbers={howManyNumbers}
-        setHowManyNumbers={setHowManyNumbers}
-        levelChoosed={levelChoosed}
-        setLevelChoosed={setLevelChoosed}
-        numbers={numbers}
-        setNumbers={setNumbers}
-        howMuchTime={howMuchTime}
-        setHowMuchTime={setHowMuchTime}
-        sum={sum}
-        setSum={setSum}
-        activeSet={activeSet}
-        setActiveSet={setActiveSet}
-        setsOfNumbers={setsOfNumbers}
-        setSetsOfNumbers={setSetsOfNumbers}
-        activeSetNumber={activeSetNumber}
-        setActiveSetNumber={setActiveSetNumber}
-        counter={counter}
-        result={result}
-        setsOfNumbersLength={setsOfNumbersLength}
-        setSetsOfNumbersLength={setSetsOfNumbersLength}
-      />
-      <Levels
-        startCounting={startCounting}
-        actualNumber={actualNumber}
-        setActualNumber={setActualNumber}
-        advanceSearch={advanceSearch}
-        setAdvanceSearch={setAdvanceSearch}
-        trigger={trigger}
-        setTrigger={setTrigger}
-        howMuchTime={howMuchTime}
-        setHowMuchTime={setHowMuchTime}
-        howManyNumbers={howManyNumbers}
-        setHowManyNumbers={setHowManyNumbers}
-        numbers={numbers}
-        setNumbers={setNumbers}
-        sum={sum}
-        setSum={setSum}
-        finish={finish}
-        setFinish={setFinish}
-        levelChoosed={levelChoosed}
-        setLevelChoosed={setLevelChoosed}
-        activeSet={activeSet}
-        setActiveSet={setActiveSet}
-        setsOfNumbers={setsOfNumbers}
-        setSetsOfNumbers={setSetsOfNumbers}
-        setsFromTeacher={setsFromTeacher}
-        setSetsFromTeacher={setSetsFromTeacher}
-        setsOfNumbersLength={setsOfNumbersLength}
-        setSetsOfNumbersLength={setSetsOfNumbersLength}
-        activeSetNumber={activeSetNumber}
-        setActiveSetNumber={setActiveSetNumber}
-      />
-    </div>
+    </>
   );
 }
 
