@@ -191,8 +191,8 @@ export default function NumbersRandom({
       <div
         className={
           levelChoosed === 2
-            ? "absolute top-0 botom-0 my-auto left-[360px] bg-white duration-200 w-[320px] p-[4px] shadow-xl rounded-[10px] flex items-center"
-            : "absolute top-0 botom-0 my-auto left-[50px] bg-white duration-200 w-[320px] p-[4px] flex items-center"
+            ? "absolute top-0 botom-0 my-auto left-[360px] bg-white duration-200 w-[320px] p-[0px] shadow-xl rounded-[10px] flex items-center"
+            : "absolute top-0 botom-0 my-auto left-[50px] bg-white duration-200 w-[320px] p-[0px] flex items-center"
         }
       >
         {/* <Time howMuchTime={howMuchTime} setHowMuchTime={setHowMuchTime} /> */}

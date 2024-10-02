@@ -115,8 +115,8 @@ export default function NumbersStarter({
       <div
         className={
           levelChoosed === 1
-            ? "absolute top-0 botom-0 my-auto md:left-[360px] left-[40px] z-20 lg:z-0 bg-white duration-200 md:w-[320px] p-[5px] md:shadow-xl shadow-[0px_0px_10px_2px_rgba(0,0,0,0.3)] rounded-[10px] flex items-center"
-            : "absolute top-0 botom-0 my-auto md:left-[50px] left-[40px] bg-white duration-200 md:w-[320px] p-[5px] flex items-center"
+            ? "absolute top-0 bottom-0 my-auto md:left-[360px] w-[270px] left-0 right-0 mx-auto z-20 lg:z-0 bg-white duration-200 md:w-[320px] p-[5px] md:shadow-xl shadow-[0px_0px_10px_2px_rgba(0,0,0,0.3)] rounded-[10px] flex items-center justify-center"
+            : "absolute top-0 bottom-0 my-auto md:left-[50px] left-0 right-0 mx-auto duration-200 md:w-[320px] w-[270px] p-[5px] flex items-center bg-white justify-center"
         }
       >
         <Time howMuchTime={howMuchTime} setHowMuchTime={setHowMuchTime} />
