@@ -170,7 +170,7 @@ export default function CountingGame({
             required
             className=" w-[300px] text-center mb-[40px] rounded-[15px]"
             value={answer}
-            type="number"
+            type="tel"
             onChange={hadleInputData}
           ></input>
           <button className="text-[30px] bg-[#7856B8] text-white px-[0px] rounded-[15px] w-[300px] mb-[5px]">
