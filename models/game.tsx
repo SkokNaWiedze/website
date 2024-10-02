@@ -5,6 +5,7 @@ const OrderSchema = new Schema({
   name: { type: String },
   numbers: Schema.Types.Mixed,
   access: { type: Array },
+  solved: { type: Array },
 });
 
 const Game = mongoose.models.Game || mongoose.model("Game", OrderSchema);

@@ -29,7 +29,7 @@ export default function HeaderRandom() {
       const results = await data;
 
       if (results.status === 200) {
-        await deleteCookie("_bagagwa", {
+        await deleteCookie("_skok_", {
           path: "/",
         });
         router.reload();
@@ -60,6 +60,14 @@ export default function HeaderRandom() {
                 className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
               >
                 Panel nauczyciela
+              </Link>
+            )}
+            {userType === "Student" && (
+              <Link
+                href="/student"
+                className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
+              >
+                Panel studenta
               </Link>
             )}
             <div className="flex bg-green-200 py-[5px] rounded-[10px] px-[10px]">

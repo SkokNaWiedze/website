@@ -20,7 +20,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
 
       //CHECK IF ANOTHER USER'S Cookie exists, delete it and  session in MongoDB.
 
-      await setCookie("_bagagwa", String(`${req.body.login}_${SessionID}`), {
+      await setCookie("_skok_", String(`${req.body.login}_${SessionID}*${AccountType}`), {
         res,
         req,
         // domain: "skoknawiedze-beta.vercel.app",

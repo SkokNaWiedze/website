@@ -12,6 +12,7 @@ import NumbersStarter from "../components/lvlstarter";
 import Advancesearch from "@/components/advancesearch";
 import Counting from "@/components/counting";
 import { AppContext } from "@/context";
+import { MdOutlineMenu } from "react-icons/md";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -77,7 +78,7 @@ export default function Home() {
         }
       };
 
-      const counting = setInterval(StartCounting, howMuchTime);
+      const counting: any = setInterval(StartCounting, howMuchTime);
 
       StartCounting();
     }, 2000);

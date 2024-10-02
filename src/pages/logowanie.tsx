@@ -11,12 +11,12 @@ export default function Login() {
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isPassCorrect, setIsPassCorrect] = useState(false);
 
-  const ExistingCookie = getCookie("_bagagwa");
+  const ExistingCookie = getCookie("_skok_");
   console.log(ExistingCookie);
 
   const checkLoogedUserOnLoad = async () => {
     console.log("dsa");
-    const ExistingCookie = await getCookie("_bagagwa");
+    const ExistingCookie = await getCookie("_skok_");
     console.log(ExistingCookie);
     if (ExistingCookie !== undefined) {
       router.push({ pathname: "/account" });

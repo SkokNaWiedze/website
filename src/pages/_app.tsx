@@ -22,7 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
     if (JsonCookie.name?.length > 0) {
       const Splited = await JsonCookie.name.split("_");
       const name = await Splited[0];
-      const session = await Splited[1];
+      const secondPartSplited = await Splited[1].split("*");
+      const session = await secondPartSplited[0];
 
       let Registration = await fetch("/api/checkIfSessionExists", {
         method: "POST",
@@ -38,7 +39,7 @@ export default function App({ Component, pageProps }: AppProps) {
       const ReturnedData = await Registration.json();
       const status = await Registration.status;
       const accountType = await ReturnedData.result;
-      console.log(accountType);
+      console.log("ACOUNT TYPE" + accountType);
 
       if (status === 200) {
         setLoggedUser(name);
