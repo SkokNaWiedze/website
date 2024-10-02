@@ -220,10 +220,15 @@ export default function Account() {
             <div className=" min-w-[80px] h-full flex mx-[15px] justify-end flex-1 items-center flex-wrap">
               {i.numbers?.map((s: any) => {
                 if (i.solved.includes("Robercik")) {
-                  return <FaStar className="md:w-[30px] md:h-[30px] md:mx-[3px] text-blue-500" />;
+                  return (
+                    <FaStar key={i} className="md:w-[30px] md:h-[30px] md:mx-[3px] text-blue-500" />
+                  );
                 } else {
                   return (
-                    <FaRegStar className="md:w-[30px] md:h-[30px] md:mx-[3px] text-blue-500" />
+                    <FaRegStar
+                      key={i}
+                      className="md:w-[30px] md:h-[30px] md:mx-[3px] text-blue-500"
+                    />
                   );
                 }
               })}
