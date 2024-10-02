@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import path from "path";
 import { AppContext } from "@/context";
 import { deleteCookie } from "cookies-next";
-import { CiMenuBurger } from "react-icons/ci";
+import { MdOutlineMenu } from "react-icons/md";
 import { CiMenuFries } from "react-icons/ci";
 
 export default function HeaderRandom() {
@@ -15,6 +15,8 @@ export default function HeaderRandom() {
 
   const { LoggedUser, setLoggedUser, userType, setUserType } = useContext(AppContext);
   console.log(LoggedUser);
+
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   const login: any = useRef();
   const loginLoader: any = useRef();
@@ -37,15 +39,28 @@ export default function HeaderRandom() {
     }
   };
 
+  const handleShowingMenu = () => {
+    console.log("fire!");
+    setMobileMenu(!mobileMenu);
+  };
+
   return (
-    <div className="lg:w-[800px] w-full h-[100px] mx-auto flex justify-end">
-      <div className="w-full md:hidden bg-white h-[80px] flex justify-between items-center px-[15px]">
+    <div className="lg:w-[800px] w-full md:h-[100px] h-[80px] mx-auto flex justify-end bg-white md:bg-transparent">
+      <div className="w-full md:hidden h-[80px] flex justify-between items-center px-[15px]">
         <div id="logo" className="h-full relative w-[80px]">
           <Image src="/logo.jpeg" fill objectFit="contain" alt="skok-na-wiedze"></Image>
         </div>
-        <CiMenuBurger className="w-[40px] h-[40px]" />
+
+        {/* menu elements */}
+        <MdOutlineMenu
+          className="md:hidden w-[50px] h-[50px] cursor-pointer"
+          onClick={handleShowingMenu}
+        />
       </div>
-      <div className="hidden lg:flex justify-center items-center">
+      <div
+        className={`${mobileMenu === true ? "left-0" : "-left-[100vw]"}
+        } " flex md:justify-end items-center absolute md:static flex-col md:flex-row bg-white md:bg-transparent top-[80px] w-full h-auto md:h-[70px] justify-evenly duration-150 z-50 py-[15px] shadow-xl md:shadow-[0px] "`}
+      >
         {/* <Link href="#" className="mr-[10px]">
           Przejdź do aplikacji
         </Link> */}
@@ -53,7 +68,7 @@ export default function HeaderRandom() {
             Strona głowna
           </Link> */}
         {LoggedUser !== undefined && (
-          <div className="flex items-center justify-center px-[17px] py-[5px] rounded-[10px] cursor-pointer">
+          <div className="flex items-center justify-center px-[17px] py-[5px] rounded-[10px] cursor-pointer flex-col md:flex-row">
             {(userType === "Admin" || userType === "Nauczyciel") && (
               <Link
                 href="/account"
@@ -65,12 +80,12 @@ export default function HeaderRandom() {
             {userType === "Student" && (
               <Link
                 href="/student"
-                className="mx-[10px] px-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
+                className="mx-[10px] px-[10px] my-[10px] bg-green-200 h-[42px] flex items-center justify-center rounded-[10px] font-semibold"
               >
                 Panel studenta
               </Link>
             )}
-            <div className="flex bg-green-200 py-[5px] rounded-[10px] px-[10px]">
+            <div className="flex bg-green-200 py-[5px] rounded-[10px] px-[10px] mb-[10px] md:mb-0">
               <IoPersonSharp className="w-[30px] h-[30px]" />
               <div className="flex flex-col items-left justify-center ml-[10px]">
                 <p className="text-[20px] leading-[20px] ">Cześć {LoggedUser} :)</p>
@@ -83,7 +98,7 @@ export default function HeaderRandom() {
           onClick={handleLogin}
           className={
             LoggedUser !== undefined
-              ? "flex items-center justify-center bg-red-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
+              ? "flex items-center justify-center bg-red-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer mb-[30px] md:mb-0"
               : "flex items-center justify-center bg-green-500 w-[160px] px-[17px] py-[9px] rounded-[10px] ml-[5px] text-white cursor-pointer"
           }
         >

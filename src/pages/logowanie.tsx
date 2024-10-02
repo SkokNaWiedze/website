@@ -85,7 +85,7 @@ export default function Login() {
       className="bg-[url('/background.jpeg')] bg-cover bg-center flex items-center justify-center w-screen h-screen"
     >
       <form
-        className="shadow-[25px_35px_30px_0px_rgba(0,0,0,0.3)] rounded-[10px] w-[400px] h-[500px] flex flex-col bg-white"
+        className="shadow-[25px_35px_30px_0px_rgba(0,0,0,0.3)] rounded-[10px] md:w-[400px] w-[85vw] h-[500px] flex flex-col bg-white"
         onSubmit={checkDataToMongoDB}
       >
         <div className="h-[150px] flex items-center justify-center text-[28px] font-semibold relative">

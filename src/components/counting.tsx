@@ -180,7 +180,7 @@ export default function Counting({
         ref={number}
         className={
           trigger === true
-            ? "fixed bg-green-500 w-screen h-screen mx-auto top-[0px] left-0 right-0 text-[350px] text-center duration-200 shadow-xl z-20 text-white flex justify-center items-center flex-col overflow-hidden"
+            ? "fixed bg-green-500 w-screen h-screen mx-auto top-[0px] left-0 right-0 text-[350px] text-center duration-200 shadow-xl z-30 text-white flex justify-center items-center flex-col overflow-hidden"
             : "bg-white h-[0px] w-[700px] overflow-hidden fixed top-[50px]"
         }
       >
@@ -212,7 +212,7 @@ export default function Counting({
       </div>
       <div
         ref={result}
-        className="w-[500px] h-[290px] absolute mx-auto top-[140px] left-0 right-0 text-[50px] text-center duration-200 items-center hidden
+        className="md:w-[500px] h-[290px] absolute mx-auto top-[140px] left-0 right-0 text-[50px] text-center duration-200 items-center hidden
         px-[10px] z-30"
       >
         <form

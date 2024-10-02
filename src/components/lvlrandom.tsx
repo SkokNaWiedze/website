@@ -230,7 +230,7 @@ export default function NumbersRandom({
       {setsFromTeacher?.length > 0 && (
         <div
           data-name="basic"
-          className="duration-200 text-center text-white text-[24px] px-[10px] py-[6px] bg-gradient-to-r from-[#EB5B98] via-[#0D9D8F] to-[#72CF26] w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-gradient-to-r hover:from-[#7856B8] hover:to-[#7856B8] hover:duration-200 z-10 leading-6"
+          className="duration-200 text-center text-white text-[24px] px-[10px] py-[6px] bg-gradient-to-r from-[#EB5B98] via-[#0D9D8F] to-[#72CF26] md:w-[320px] mb-[5px] cursor-pointer rounded-[10px] hover:bg-gradient-to-r hover:from-[#7856B8] hover:to-[#7856B8] hover:duration-200 z-10 leading-6 mx-auto md:mx-0"
           onClick={showPopUpWithSetsFromTeacher}
         >
           Zadania od nauczyciela

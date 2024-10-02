@@ -75,8 +75,6 @@ export default function Levels({
     setAdvanceSearch(true);
   };
 
-  const [isExploding, setIsExploding] = useState(false);
-
   const handleTrigger = () => {
     setTrigger(!trigger);
     setActualNumber("");
@@ -120,7 +118,7 @@ export default function Levels({
   };
 
   return (
-    <div className="md:w-[800px] w-[90vw] mx-auto flex justify-center items-center h-[400px] relative bg-white rounded-[20px] shadow-[15px_25px_30px_0px_rgba(0,0,0,0.3)]">
+    <div className="md:w-[800px] w-[90vw] mx-auto flex justify-center items-center h-[400px] relative bg-white rounded-[20px] shadow-[15px_25px_30px_0px_rgba(0,0,0,0.3)] mt-[16vh] md:mt-0">
       <div className="h-auto w-[700px] mx-auto relative">
         <div className="flex">
           <div className="md:w-1/2">

@@ -114,12 +114,12 @@ export default function NumbersBasic({
       <div
         className={
           levelChoosed === 2
-            ? "absolute top-0 botom-0 my-auto md:left-[360px] left-[50px] z-20 lg:z-0 bg-white duration-200 w-[320px] p-[5px] md:shadow-xl shadow-[0px_0px_10px_2px_rgba(0,0,0,0.3)] rounded-[10px] flex items-center"
-            : "absolute top-0 botom-0 my-auto left-[50px] bg-white duration-200 w-[320px] p-[5px] flex items-center"
+            ? "absolute top-0 botom-0 my-auto md:left-[360px] left-[40px] z-20 lg:z-0 bg-white duration-200 md:w-[320px] p-[5px] md:shadow-xl shadow-[0px_0px_10px_2px_rgba(0,0,0,0.3)] rounded-[10px] flex items-center"
+            : "absolute top-0 botom-0 my-auto md:left-[50px] left-[40px] bg-white duration-200 md:w-[320px] p-[5px] flex items-center"
         }
       >
         <Time howMuchTime={howMuchTime} setHowMuchTime={setHowMuchTime} />
-        <div className="w-[30px] h-[30px] ml-[10px] text-[#7856B8]">
+        <div className="w-[30px] h-[30px] ml-[10px] text-[#7856B8] hidden md:block">
           <FaInfoCircle
             className="w-full h-full cursor-pointer"
             onMouseOver={handleInfodescStarter}
