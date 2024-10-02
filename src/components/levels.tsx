@@ -122,7 +122,7 @@ export default function Levels({
       <div className="h-auto w-[700px] mx-auto relative">
         <div className="flex">
           <div className="md:w-1/2">
-            <p className="text-[18px] md:text-right text-left md:pr-[30px] pl-[52px]">
+            <p className="text-[18px] md:text-right text-center md:pr-[30px] md:pl-[52px]">
               Wybierz poziom trudności:
             </p>
             <NumbersStarter
