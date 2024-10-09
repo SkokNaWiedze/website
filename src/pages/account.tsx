@@ -1,6 +1,5 @@
 import React, { use, useContext, useEffect, useState, useRef } from "react";
-// import { IoIosArrowDropupCircle } from "react-icons/io";
-// import { IoIosArrowDropdownCircle } from "react-icons/io";
+
 import HeaderAccount from "@/components/headerAccount";
 import { AppContext } from "@/context";
 import { IoIosCloseCircleOutline } from "react-icons/io";
@@ -10,6 +9,7 @@ import Select from "react-select";
 import AddNewSet from "@/components/addNewSet";
 import AddNewUser from "@/components/user/addNewUser";
 import AddNumbersToGame from "@/components/account/addNumbersToGame";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 export default function Account() {
   const newSets: any = useRef();
@@ -299,8 +299,13 @@ export default function Account() {
             {gameDataBase.map((e: any) => {
               if (e.solved.includes(i.login))
                 return (
-                  <div className="border h-[25px] px-[10px] bg-green-500 text-white rounded-md">
-                    {e.name}
+                  <div className="border h-[25px] px-[10px] bg-green-500 text-white rounded-md flex">
+                    {e.name}&nbsp;&nbsp;&nbsp;
+                    <div className="flex items-center w-[50px] bg-white text-blue-600 justify-center m-[2px] rounded-md">
+                      <p className="text-[14px]">{e.numbers.length}x</p>
+
+                      <FaStar className="w-[16px] h-[16px] text-blur-600 " />
+                    </div>
                   </div>
                 );
             })}
