@@ -46,21 +46,11 @@ export default function Account() {
   const [ownersSets, setOwnerSets] = useState();
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [gameDataFromDB, setGameDataFromDB] = useState();
+  const [usersFromDataBase, setUsersFromDataBase] = useState([]);
+  const [gameDataBase, setGameDataBase] = useState<any>();
+  const [searchUser, setSearchUser] = useState("");
 
   const { LoggedUser, setLoggedUser } = useContext(AppContext);
-  // console.log(LoggedUser);
-
-  // const getUserName = async () => {
-  //   let data = await fetch("/api/getCookie", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   let results = await data.json();
-  //   let name = await results.name.split("_");
-  //   setLoggedUser(name[0]);
-  // };
 
   const checkActualSetsOfNumbers = (returned: any) => {
     // console.log(returned);
@@ -123,15 +113,6 @@ export default function Account() {
     };
   });
 
-  const users = [
-    { value: "magda", label: "Magda" },
-    { value: "karolina", label: "Karolina" },
-    { value: "marek", label: "Marek" },
-    { value: "basia", label: "Basia" },
-    { value: "krysia", label: "Krysia" },
-    { value: "robert", label: "Robert" },
-  ];
-
   const deleteNumbers = async (e: any, Numbers: any) => {
     setIsDataLoaded(false);
     let query = await JSON.stringify({
@@ -179,6 +160,8 @@ export default function Account() {
     });
     const dataJson = await data.json();
     setNumbersFromDataBase(await dataJson.NumbersData);
+    setUsersFromDataBase(await dataJson.UsersData);
+    setGameDataBase(await dataJson.GameData);
   };
 
   const handleAddValue = (e: any, row: number, cols: number) => {
@@ -250,24 +233,24 @@ export default function Account() {
     </div>
   );
 
-  const SharedSetsNames = userSetsData?.map((i: any) => (
-    <div key={i} className="flex my-[10px] justify-between py-[5px]">
-      <div className="flex items-start">
-        {i.numbers.map((sets: any, index: any) => (
-          <div key={sets} className="flex">
-            <div className="text-[30px] text-white p-[10px] border min-w-[42px] min-h-[42px] mr-[5px] flex justify-start items-center rounded-[10px]">
-              {" "}
-              <div className="flex border-red-900 justify-start">
-                <div className="bg-green-400 h-[30px] px-[10px] rounded-[10px] text-[20px]">
-                  {sets.table_name}
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  ));
+  // const SharedSetsNames = userSetsData?.map((i: any) => (
+  //   <div key={i} className="flex my-[10px] justify-between py-[5px]">
+  //     <div className="flex items-start">
+  //       {i.numbers.map((sets: any, index: any) => (
+  //         <div key={sets} className="flex">
+  //           <div className="text-[30px] text-white p-[10px] border min-w-[42px] min-h-[42px] mr-[5px] flex justify-start items-center rounded-[10px]">
+  //             {" "}
+  //             <div className="flex border-red-900 justify-start">
+  //               <div className="bg-green-400 h-[30px] px-[10px] rounded-[10px] text-[20px]">
+  //                 {sets.table_name}
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       ))}
+  //     </div>
+  //   </div>
+  // ));
 
   const handleDeletingSetFromDB = async (e: any, table_name: any) => {
     // loader.current.style.display = "flex";
@@ -291,6 +274,40 @@ export default function Account() {
     getSetsAndNamesFromDB();
     setSelectedOptionSets(null);
   };
+
+  const Users = usersFromDataBase
+    ?.filter(
+      (element: any) =>
+        element.login.includes(searchUser) ||
+        element.firstName.includes(searchUser) ||
+        (element.lastName !== undefined && element.lastName.includes(searchUser)),
+    )
+    .map((i: any) => (
+      <>
+        <div id="container" className="flex border-b my-[10px]">
+          <div className="flex flex-col min-w-[400px]">
+            <div>
+              <p className="font-bold inline">Imię i nazwisko: </p>
+              {i.firstName} {i.lastName}
+            </div>
+            <div>
+              <p className="font-bold inline">Login: </p>
+              {i.login}
+            </div>
+          </div>
+          <div className="flex border-l">
+            {gameDataBase.map((e: any) => {
+              if (e.solved.includes(i.login))
+                return (
+                  <div className="border h-[25px] px-[10px] bg-green-500 text-white rounded-md">
+                    {e.name}
+                  </div>
+                );
+            })}
+          </div>
+        </div>
+      </>
+    ));
 
   const YourSets = userSetsData?.map((i: any) => (
     <div key={i} className="flex my-[10px] justify-between py-[5px]">
@@ -516,6 +533,11 @@ export default function Account() {
 
   const hideInfoAboutSets = () => {
     infoAboutSets.current.style.display = "none";
+  };
+
+  const handleSearchingLogin = (e: any) => {
+    setSearchUser(e.target.value);
+    console.log(searchUser);
   };
 
   // console.log(inputData);
@@ -774,11 +796,21 @@ export default function Account() {
         gameDataFromDB={gameDataFromDB}
       />
 
-      <div className="w-[1050px] mx-auto min-h-[100px] my-[10px]  rounded-[10px] shadow-xl bg-white">
-        <div className="p-[10px]">
-          <p className="mb-[20px] font-bold text-[20px]">
-            Zestawy udostepnione dla Ciebie: (wkrótce)
-          </p>
+      <div className="w-[1050px] mx-auto h-auto my-[10px] rounded-[10px] shadow-xl bg-white">
+        <div className="p-[10px] ">
+          <div className="flex">
+            <p className="mb-[20px] font-bold text-[20px]"> Raporty z postępów uczniów</p>
+            <input
+              className=" h-[30px] ml-[40px] px-[5px] border-gray-400"
+              placeholder="Szukaj ucznia"
+              onChange={handleSearchingLogin}
+            ></input>
+          </div>
+          <div className=" flex font-bold text-[20px]">
+            <div className="min-w-[400px] font-bold">Uczeń</div>
+            <div className="min-w-[400px]">Rowiązane zestawy</div>
+          </div>
+          <div className="overflow-scroll h-[500px]">{Users}</div>
           <div id="data=base">
             {/* {activeNumbers?.map((i: any, index) => (
               <div key={i} className="flex my-[10px] justify-between border-b py-[5px]">
