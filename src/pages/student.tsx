@@ -214,7 +214,7 @@ export default function Account() {
             Fire!
           </div> */}
           <div className="flex items-start border-b-[2px] border-green-500 pb-[10px] w-[95%] mx-auto">
-            <div className="bg-[#F36D6B] h-[30px] w-[150px] px-[10px] rounded-[3px] text-[20px] text-white">
+            <div className="bg-[#F36D6B] h-[30px] min-w-[150px] px-[10px] rounded-[3px] text-[20px] text-white">
               {i.name}
             </div>
             <div className=" min-w-[80px] h-full flex mx-[15px] justify-end flex-1 items-center flex-wrap">
