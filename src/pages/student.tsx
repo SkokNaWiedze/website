@@ -201,18 +201,16 @@ export default function Account() {
         user: LoggedUser,
       }),
     });
+
+
   };
 
-  const YourSets = gameData?.map((i: any) => {
+  const gameDataSorted = gameData?.sort((a:any,b:any) => a.id - b.id )
+
+  const YourSets = gameDataSorted?.map((i: any) => {
     if (i.access.includes(LoggedUser) || i.id === 1) {
       return (
         <div key={i} className="flex my-[10px] justify-between py-[5px] border">
-          {/* <div
-            className="cursor-pointer bg-gray-500"
-            onClick={handleActualizingDataBaseAfterSolvedSet}
-          >
-            Fire!
-          </div> */}
           <div className="flex items-start border-b-[2px] border-green-500 pb-[10px] w-[95%] mx-auto">
             <div className="bg-[#F36D6B] h-[30px] min-w-[150px] px-[10px] rounded-[3px] text-[20px] text-white">
               {i.name}

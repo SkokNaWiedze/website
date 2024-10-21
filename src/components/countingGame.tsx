@@ -94,7 +94,6 @@ export default function CountingGame({
       musicBad.current.play();
     }
 
-    // const result = handleLookingForLastSolvedSet(setFinishPopUp);
     console.log(handleLookingForLastSolvedSet(setFinishPopUp, musicFinal));
   };
 
