@@ -13,6 +13,7 @@ import AddNewSet from "@/components/addNewSet";
 
 export default function Account() {
   const loader: any = useRef();
+  const loaderLoading: any = useRef();
   const newAccount: any = useRef();
   const counter: any = useRef();
   const result: any = useRef();
@@ -130,6 +131,10 @@ export default function Account() {
     console.log(i);
     let suma: number = 0;
 
+    if (result.current.style.display === "block") {
+      result.current.style.display = "none";
+    }
+
     setTimeout(() => {
       const StartCounting = () => {
         counter.current.style.color = "white";
@@ -201,11 +206,15 @@ export default function Account() {
         user: LoggedUser,
       }),
     });
-
-
   };
 
-  const gameDataSorted = gameData?.sort((a:any,b:any) => a.id - b.id )
+  const gameDataSorted = gameData?.sort((a: any, b: any) => a.id - b.id);
+
+  const countAgain = () => {
+    setActiveSet(activeSet - 1);
+    setFinish(false);
+    setIsCounting(true);
+  };
 
   const YourSets = gameDataSorted?.map((i: any) => {
     if (i.access.includes(LoggedUser) || i.id === 1) {
@@ -272,13 +281,15 @@ export default function Account() {
         //functions
         handlePreparingGame={handlePreparingGame}
         handleLookingForLastSolvedSet={handleLookingForLastSolvedSet}
-        //
+        startCounting={startCounting}
         actualNumber={actualNumber}
+        countAgain={countAgain}
         setActualNumber={setActualNumber}
         showedCountingView={showedCountingView}
         setShowedCountingView={setShowedCountingView}
         finish={finish}
         setFinish={setFinish}
+        loaderLoading={loaderLoading}
         howManyNumbers={howManyNumbers}
         setHowManyNumbers={setHowManyNumbers}
         numbers={numbers}

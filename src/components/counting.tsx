@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
+import { MdOutlineRefresh } from "react-icons/md";
 
 interface Props {
   startCounting: any;
@@ -184,6 +185,7 @@ export default function Counting({
             : "bg-white h-[0px] w-[700px] overflow-hidden fixed top-[50px]"
         }
       >
+        {" "}
         <audio ref={music} src="/victory.mp3"></audio>
         <audio ref={musicBad} src="/bad_answer.mp3"></audio>
         {isExploding === true && <ConfettiExplosion {...largeProps} />}

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ConfettiExplosion, { ConfettiProps } from "react-confetti-explosion";
 import { useRouter } from "next/navigation";
+import { MdOutlineRefresh } from "react-icons/md";
 
 interface Props {
   handlePreparingGame: any;
@@ -27,6 +28,9 @@ interface Props {
   setAnswer: any;
   counter: any;
   result: any;
+  startCounting: any;
+  loaderLoading: any;
+  countAgain: any;
 }
 
 export default function CountingGame({
@@ -54,6 +58,9 @@ export default function CountingGame({
   setAnswer,
   isExploding,
   setIsExploding,
+  startCounting,
+  loaderLoading,
+  countAgain,
 }: Props) {
   const number: any = useRef();
   const music: any = useRef();
@@ -133,13 +140,19 @@ export default function CountingGame({
         <audio ref={musicBad} src="/bad_answer.mp3"></audio>
         {isExploding === true && <ConfettiExplosion {...largeProps} />}
         <div
-          className="absolute left-0 top-0 w-[20px] h-[25px] text-[20px]"
+          className="absolute left-2 top-2 w-[20px] h-[20px] text-[20px] cursor-pointer bg-white text-black place-content-center grid rounded-sm"
           onClick={handleClosingAnswer}
         >
           X
         </div>
+        <div
+          onClick={countAgain}
+          className="absolute w-auto h-[25px] top-1 border right-1 text-[16px] flex items-center cursor-pointer rounded-md bg-white text-black"
+        >
+          <p className="w-auto px-[5px]">Ponów</p> <MdOutlineRefresh className="w-[40px] h-full" />
+        </div>
         {showedCountingView === true && finish === false && (
-          <div className="absolute top-[0px] w-screen h-[30px] loader">
+          <div ref={loaderLoading} className="absolute top-[0px] w-screen h-[30px] loader">
             <div className="loading-grow"></div>
           </div>
         )}
